@@ -7,6 +7,9 @@ import WtkRadio from './WtkRadio/WtkRadio';
 import WtkSwitch from './WtkSwitch/WtkSwitch';
 import WtkTextarea from './WtkTextarea/WtkTextarea';
 
+// playground layout only, kept out of style.css so it never reaches the package
+import '../styles/preview.css';
+
 type ThemeChoiceType = 'system' | 'light' | 'dark';
 
 const PlusIcon: FC = () => (

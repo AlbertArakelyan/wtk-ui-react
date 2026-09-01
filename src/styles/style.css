@@ -1,7 +1,8 @@
 /*
- * The only stylesheet the app imports. src/main.tsx loads this file and
- * nothing else, so cascade order is decided here rather than by the React
- * module graph. Component .tsx files never import CSS.
+ * Every stylesheet the library ships. src/main.tsx loads this file, and
+ * src/index.ts imports it so the package build emits dist/styles.css, so
+ * anything reachable from here is published. Toolkit component .tsx files never
+ * import CSS; cascade order is decided here, not by the React module graph.
  */
 
 @import "./vars.css";
@@ -19,8 +20,7 @@
 @import "./components/wtkTextarea.css";
 
 /*
-*** Demo only. Layout for the preview harness in
-*** src/components/Playground.tsx. Delete this line and the file itself once a
-*** real app shell exists.
+*** preview.css is deliberately NOT imported here. It is playground layout, and
+*** anything reachable from this file ends up in the published dist/styles.css.
+*** Playground.tsx imports it directly instead.
 */
-@import "./preview.css";
