@@ -1,6 +1,7 @@
 import { type FC, useEffect, useState } from 'react';
 
 import WtkButton from './components/WtkButton/WtkButton';
+import WtkInput from './components/WtkInput/WtkInput';
 
 type ThemeChoiceType = 'system' | 'light' | 'dark';
 
@@ -13,6 +14,13 @@ const PlusIcon: FC = () => (
 const TrashIcon: FC = () => (
   <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
     <path d="M3 5h10M6.5 5V3.5h3V5M4.5 5l.5 8h6l.5-8M6.5 7.5v3.5M9.5 7.5v3.5" />
+  </svg>
+);
+
+const SearchIcon: FC = () => (
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <circle cx="7" cy="7" r="4.25" />
+    <path d="M10.2 10.2L13.5 13.5" />
   </svg>
 );
 
@@ -127,6 +135,57 @@ const App = () => {
               <WtkButton size="square-icon" variant="flat" icon={<ChevronIcon />} />
               <WtkButton size="square-icon" variant="destructive" icon={<TrashIcon />} />
               <WtkButton size="square-icon" icon={<PlusIcon />} disabled />
+            </div>
+          </section>
+        </section>
+
+        <section className="preview-component">
+          <h1 className="preview-component-title">WtkInput</h1>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Sizes</h2>
+            <div className="preview-row">
+              <WtkInput inputSize="sm" placeholder="Small" wrapperClassName="preview-field" />
+              <WtkInput inputSize="md" placeholder="Medium" wrapperClassName="preview-field" />
+              <WtkInput inputSize="lg" placeholder="Large" wrapperClassName="preview-field" />
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Labels</h2>
+            <div className="preview-row">
+              <WtkInput label="Name" placeholder="Enter a name" wrapperClassName="preview-field" />
+              <WtkInput label="Port" defaultValue="8080" wrapperClassName="preview-field" />
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Icons</h2>
+            <div className="preview-row">
+              <WtkInput icon={<SearchIcon />} placeholder="Search" wrapperClassName="preview-field" />
+              <WtkInput
+                icon={<SearchIcon />}
+                iconPosition="left"
+                placeholder="Icon on the left"
+                wrapperClassName="preview-field"
+              />
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">States</h2>
+            <div className="preview-row">
+              <WtkInput placeholder="Default" wrapperClassName="preview-field" />
+              <WtkInput defaultValue="Disabled" disabled wrapperClassName="preview-field" />
+              <WtkInput defaultValue="Read only" readOnly wrapperClassName="preview-field" />
+            </div>
+            <div className="preview-row">
+              <WtkInput
+                label="Port"
+                defaultValue="not-a-number"
+                error="Must be a number between 1 and 65535"
+                wrapperClassName="preview-field"
+              />
             </div>
           </section>
         </section>

@@ -98,6 +98,11 @@
 	margin-top: var(--wtk-spacing-md);
 }
 
+/* inputs stretch to their container, so give them a sane width in a demo row */
+.preview-field {
+	max-width: 220px;
+}
+
 .preview-row-label {
 	min-width: 96px;
 	font-size: var(--wtk-font-size-small);
