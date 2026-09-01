@@ -60,6 +60,7 @@
 	--wtk-scale-thumb-size: 16px;
 	--wtk-switch-width: 40px;
 	--wtk-switch-height: 22px;
+	--wtk-switch-thumb-size: 16px;
 	--wtk-check-size: 16px;
 	--wtk-radio-size: 16px;
 	--wtk-scrollbar-size: 10px;
@@ -484,13 +485,20 @@
 	*** Switch
 	*/
 	--wtk-switch-track-bg: var(--wtk-surface-sunken);
+	--wtk-switch-track-bg-hover: var(--wtk-surface-active);
 	--wtk-switch-track-bg-checked: var(--wtk-accent);
+	--wtk-switch-track-bg-checked-hover: var(--wtk-accent-hover);
 	--wtk-switch-track-bg-disabled: var(--wtk-surface-window);
 	--wtk-switch-track-border: var(--wtk-stroke);
+	--wtk-switch-track-border-checked: var(--wtk-accent-active);
+	--wtk-switch-track-border-error: var(--wtk-destructive);
 	--wtk-switch-thumb-bg: var(--wtk-knob);
+	--wtk-switch-thumb-bg-disabled: var(--wtk-fg-disabled);
 	--wtk-switch-thumb-border: var(--wtk-knob-border);
 	--wtk-switch-indicator-fg: var(--wtk-fg-muted);
 	--wtk-switch-indicator-fg-checked: var(--wtk-accent-fg);
+	--wtk-switch-label-fg: var(--wtk-fg);
+	--wtk-switch-error-fg: var(--wtk-destructive);
 
 	/*
 	*** Spin button. The entry and the two steppers share a border.

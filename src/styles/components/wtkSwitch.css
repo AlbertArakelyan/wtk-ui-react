@@ -1,0 +1,171 @@
+.wtk-switch-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wtk-spacing-xs);
+}
+
+.wtk-switch {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--wtk-spacing-md);
+	cursor: default;
+}
+
+/* label on the left is a visual reversal only, the DOM order never changes */
+.wtk-switch--label-left {
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	width: 100%;
+}
+
+/*
+*** The real input stays in the tab order and keeps Space toggling the value.
+*** It is only made invisible.
+*/
+.wtk-switch__input {
+	position: absolute;
+	left: 0;
+	width: var(--wtk-switch-width);
+	height: var(--wtk-switch-height);
+	margin: 0;
+	opacity: 0;
+}
+
+.wtk-switch__track {
+	position: relative;
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	width: var(--wtk-switch-width);
+	height: var(--wtk-switch-height);
+	background-color: var(--wtk-switch-track-bg);
+	border: var(--wtk-border-width) solid var(--wtk-switch-track-border);
+	/* the one control SPEC.md section 4 allows a pill radius */
+	border-radius: var(--wtk-border-radius-pill);
+	transition:
+		background-color var(--wtk-transition) var(--wtk-easing),
+		border-color var(--wtk-transition) var(--wtk-easing),
+		box-shadow var(--wtk-transition) var(--wtk-easing);
+}
+
+/*
+*** Embedded state glyphs, required by SPEC.md section 5.2. I sits on the left
+*** and shows when on, since the thumb has moved right. O mirrors it.
+*/
+.wtk-switch__on,
+.wtk-switch__off {
+	position: absolute;
+	width: var(--wtk-icon-size-sm);
+	height: var(--wtk-icon-size-sm);
+	color: var(--wtk-switch-indicator-fg);
+	opacity: 0;
+	transition:
+		opacity var(--wtk-transition) var(--wtk-easing),
+		color var(--wtk-transition) var(--wtk-easing);
+}
+
+.wtk-switch__on {
+	left: var(--wtk-spacing-sm);
+}
+
+.wtk-switch__off {
+	right: var(--wtk-spacing-sm);
+	opacity: 1;
+}
+
+.wtk-switch__thumb {
+	position: absolute;
+	left: var(--wtk-spacing-xs);
+	width: var(--wtk-switch-thumb-size);
+	height: var(--wtk-switch-thumb-size);
+	background-color: var(--wtk-switch-thumb-bg);
+	border: var(--wtk-border-width) solid var(--wtk-switch-thumb-border);
+	border-radius: var(--wtk-border-radius-pill);
+	transition:
+		transform var(--wtk-transition) var(--wtk-easing),
+		background-color var(--wtk-transition) var(--wtk-easing);
+}
+
+.wtk-switch__label {
+	font-size: var(--wtk-font-size-base);
+	color: var(--wtk-switch-label-fg);
+}
+
+.wtk-switch__error {
+	font-size: var(--wtk-font-size-small);
+	color: var(--wtk-switch-error-fg);
+}
+
+/* hover */
+.wtk-switch__input:hover:not(:disabled) + .wtk-switch__track {
+	background-color: var(--wtk-switch-track-bg-hover);
+}
+
+/* checked */
+.wtk-switch__input:checked + .wtk-switch__track {
+	background-color: var(--wtk-switch-track-bg-checked);
+	border-color: var(--wtk-switch-track-border-checked);
+}
+
+/*
+*** Travel: the track's content box minus the thumb and its two insets.
+*** 40 - 2 border - 16 thumb - 4 inset = 18px, all from tokens.
+*/
+.wtk-switch__input:checked + .wtk-switch__track .wtk-switch__thumb {
+	transform: translateX(
+		calc(
+			var(--wtk-switch-width) - var(--wtk-border-width) * 2 - var(--wtk-switch-thumb-size) -
+				var(--wtk-spacing-xs) * 2
+		)
+	);
+}
+
+.wtk-switch__input:checked + .wtk-switch__track .wtk-switch__on {
+	color: var(--wtk-switch-indicator-fg-checked);
+	opacity: 1;
+}
+
+.wtk-switch__input:checked + .wtk-switch__track .wtk-switch__off {
+	opacity: 0;
+}
+
+.wtk-switch__input:checked:hover:not(:disabled) + .wtk-switch__track {
+	background-color: var(--wtk-switch-track-bg-checked-hover);
+}
+
+/* focus: the ring goes on the track, since the input itself is invisible */
+.wtk-switch__input:focus-visible + .wtk-switch__track {
+	border-color: var(--wtk-border-color-focus);
+	box-shadow: 0 0 0 var(--wtk-focus-ring-width) var(--wtk-focus-ring-color);
+}
+
+/* disabled */
+.wtk-switch__input:disabled + .wtk-switch__track {
+	background-color: var(--wtk-switch-track-bg-disabled);
+	border-color: var(--wtk-border-color);
+}
+
+.wtk-switch__input:disabled + .wtk-switch__track .wtk-switch__thumb {
+	background-color: var(--wtk-switch-thumb-bg-disabled);
+	border-color: var(--wtk-border-color);
+}
+
+.wtk-switch__input:disabled + .wtk-switch__track .wtk-switch__on,
+.wtk-switch__input:disabled + .wtk-switch__track .wtk-switch__off {
+	color: var(--wtk-color-text-disabled);
+}
+
+.wtk-switch__input:disabled ~ .wtk-switch__label {
+	color: var(--wtk-color-text-disabled);
+}
+
+/* error */
+.wtk-switch--error .wtk-switch__track {
+	border-color: var(--wtk-switch-track-border-error);
+}
+
+.wtk-switch--error .wtk-switch__input:focus-visible + .wtk-switch__track {
+	border-color: var(--wtk-switch-track-border-error);
+	box-shadow: 0 0 0 var(--wtk-focus-ring-width) var(--wtk-focus-ring-color-error);
+}

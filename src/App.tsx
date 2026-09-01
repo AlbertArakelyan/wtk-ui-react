@@ -4,6 +4,7 @@ import WtkButton from './components/WtkButton/WtkButton';
 import WtkCheckbox from './components/WtkCheckbox/WtkCheckbox';
 import WtkInput from './components/WtkInput/WtkInput';
 import WtkRadio from './components/WtkRadio/WtkRadio';
+import WtkSwitch from './components/WtkSwitch/WtkSwitch';
 import WtkTextarea from './components/WtkTextarea/WtkTextarea';
 
 type ThemeChoiceType = 'system' | 'light' | 'dark';
@@ -38,6 +39,7 @@ const App = () => {
   const [isPinned, setIsPinned] = useState(false);
   const [isTelemetryOn, setIsTelemetryOn] = useState(false);
   const [zone, setZone] = useState('center');
+  const [isDarkPreferred, setIsDarkPreferred] = useState(false);
 
   useEffect(() => {
     if (theme === 'system') {
@@ -357,6 +359,62 @@ const App = () => {
             <h2 className="preview-section-title">Error</h2>
             <div className="preview-row">
               <WtkRadio name="preview-plan" value="free" label="Pick a plan" error="A selection is required" />
+            </div>
+          </section>
+        </section>
+
+        <section className="preview-component">
+          <h1 className="preview-component-title">WtkSwitch</h1>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">States</h2>
+            <div className="preview-row">
+              <span className="preview-row-label">Enabled</span>
+              <WtkSwitch label="Off" />
+              <WtkSwitch label="On" defaultChecked />
+            </div>
+            <div className="preview-row">
+              <span className="preview-row-label">Disabled</span>
+              <WtkSwitch label="Off" disabled />
+              <WtkSwitch label="On" defaultChecked disabled />
+            </div>
+            <div className="preview-row">
+              <span className="preview-row-label">No label</span>
+              <WtkSwitch />
+              <WtkSwitch defaultChecked />
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Label position</h2>
+            <div className="preview-row">
+              <WtkSwitch label="Label on the right" defaultChecked />
+            </div>
+            <div className="preview-row">
+              <WtkSwitch
+                label="Label on the left, switch pinned right"
+                labelPosition="left"
+                defaultChecked
+                wrapperClassName="preview-field preview-field--wide"
+              />
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Controlled</h2>
+            <div className="preview-row">
+              <WtkSwitch
+                label={isDarkPreferred ? 'Dark theme preferred' : 'Light theme preferred'}
+                checked={isDarkPreferred}
+                onChange={(event) => setIsDarkPreferred(event.target.checked)}
+              />
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Error</h2>
+            <div className="preview-row">
+              <WtkSwitch label="Enable syncing" error="Sign in before enabling this" />
             </div>
           </section>
         </section>
