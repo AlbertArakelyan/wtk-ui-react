@@ -544,12 +544,17 @@
 	*** Check box and radio button
 	*/
 	--wtk-check-bg: var(--wtk-surface-base);
+	--wtk-check-bg-hover: var(--wtk-surface-hover);
 	--wtk-check-bg-checked: var(--wtk-accent);
+	--wtk-check-bg-checked-hover: var(--wtk-accent-hover);
 	--wtk-check-bg-disabled: var(--wtk-surface-window);
 	--wtk-check-border: var(--wtk-stroke-strong);
 	--wtk-check-border-checked: var(--wtk-accent-active);
+	--wtk-check-border-error: var(--wtk-destructive);
 	--wtk-check-mark-fg: var(--wtk-accent-fg);
 	--wtk-check-mark-fg-disabled: var(--wtk-fg-disabled);
+	--wtk-check-label-fg: var(--wtk-fg);
+	--wtk-check-error-fg: var(--wtk-destructive);
 
 	/*
 	*** Progress bar and level bar

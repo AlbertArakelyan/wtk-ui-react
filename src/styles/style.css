@@ -12,6 +12,7 @@
 *** Component stylesheets, alphabetically.
 */
 @import "./components/wtkButton.css";
+@import "./components/wtkCheckbox.css";
 @import "./components/wtkInput.css";
 @import "./components/wtkTextarea.css";
 
