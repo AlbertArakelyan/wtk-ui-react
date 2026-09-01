@@ -19,7 +19,8 @@
 @import "./components/wtkTextarea.css";
 
 /*
-*** Demo only. Layout for the preview harness in src/App.tsx. Delete this line
-*** and the file itself once a real app shell exists.
+*** Demo only. Layout for the preview harness in
+*** src/components/Playground.tsx. Delete this line and the file itself once a
+*** real app shell exists.
 */
 @import "./preview.css";
