@@ -1,0 +1,104 @@
+.wtk-textarea-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wtk-spacing-xs);
+	width: 100%;
+}
+
+.wtk-textarea__label {
+	font-size: var(--wtk-font-size-base);
+	color: var(--wtk-textarea-label-fg);
+}
+
+.wtk-textarea {
+	/* block kills the descender gap an inline textarea leaves underneath */
+	display: block;
+	width: 100%;
+	/* max-width stops a horizontal resize handle from bursting the fixed viewport */
+	max-width: 100%;
+	min-height: var(--wtk-textarea-min-height);
+	padding: var(--wtk-spacing-sm) var(--wtk-spacing-md);
+	font-family: var(--wtk-font-family);
+	font-size: var(--wtk-font-size-base);
+	line-height: var(--wtk-line-height);
+	color: var(--wtk-textarea-fg);
+	background-color: var(--wtk-textarea-bg);
+	border: var(--wtk-border-width) solid var(--wtk-textarea-border);
+	border-radius: var(--wtk-border-radius);
+	/* no drag handle unless the resizable prop asks for one */
+	resize: none;
+	transition:
+		border-color var(--wtk-transition) var(--wtk-easing),
+		box-shadow var(--wtk-transition) var(--wtk-easing);
+
+	&::placeholder {
+		color: var(--wtk-textarea-placeholder-fg);
+		opacity: 1;
+	}
+
+	&:hover:not(:disabled):not(:focus) {
+		border-color: var(--wtk-textarea-border-hover);
+	}
+
+	&:focus-visible {
+		border-color: var(--wtk-textarea-border-focus);
+		box-shadow: 0 0 0 var(--wtk-focus-ring-width) var(--wtk-focus-ring-color);
+	}
+
+	&:disabled {
+		color: var(--wtk-textarea-fg-disabled);
+		background-color: var(--wtk-textarea-bg-disabled);
+	}
+
+	&::selection {
+		color: var(--wtk-textarea-selection-fg);
+		background-color: var(--wtk-textarea-selection-bg);
+	}
+}
+
+.wtk-textarea__error {
+	font-size: var(--wtk-font-size-small);
+	color: var(--wtk-textarea-error-fg);
+}
+
+/* sizes change padding and type only, the height comes from the rows attribute */
+.wtk-textarea--sm {
+	padding: var(--wtk-spacing-xs) var(--wtk-spacing-sm);
+	font-size: var(--wtk-font-size-small);
+}
+
+.wtk-textarea--md {
+	padding: var(--wtk-spacing-sm) var(--wtk-spacing-md);
+}
+
+.wtk-textarea--lg {
+	padding: var(--wtk-spacing-md) var(--wtk-spacing-lg);
+	font-size: var(--wtk-font-size-large);
+}
+
+/* resize, one class per resizable value */
+.wtk-textarea--resize-both {
+	resize: both;
+}
+
+.wtk-textarea--resize-horizontal {
+	resize: horizontal;
+}
+
+.wtk-textarea--resize-vertical {
+	resize: vertical;
+}
+
+/* error keeps its border in every state, and the ring switches to the error tint */
+.wtk-textarea--error {
+	border-color: var(--wtk-textarea-border-error);
+
+	&:hover:not(:disabled):not(:focus) {
+		border-color: var(--wtk-textarea-border-error);
+	}
+
+	&:focus-visible {
+		border-color: var(--wtk-textarea-border-error);
+		box-shadow: 0 0 0 var(--wtk-focus-ring-width) var(--wtk-focus-ring-color-error);
+	}
+}

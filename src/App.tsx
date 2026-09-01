@@ -2,6 +2,7 @@ import { type FC, useEffect, useState } from 'react';
 
 import WtkButton from './components/WtkButton/WtkButton';
 import WtkInput from './components/WtkInput/WtkInput';
+import WtkTextarea from './components/WtkTextarea/WtkTextarea';
 
 type ThemeChoiceType = 'system' | 'light' | 'dark';
 
@@ -185,6 +186,80 @@ const App = () => {
                 defaultValue="not-a-number"
                 error="Must be a number between 1 and 65535"
                 wrapperClassName="preview-field"
+              />
+            </div>
+          </section>
+        </section>
+
+        <section className="preview-component">
+          <h1 className="preview-component-title">WtkTextarea</h1>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Sizes</h2>
+            <div className="preview-row">
+              <WtkTextarea size="sm" rows={2} placeholder="Small" wrapperClassName="preview-field" />
+              <WtkTextarea size="md" rows={2} placeholder="Medium" wrapperClassName="preview-field" />
+              <WtkTextarea size="lg" rows={2} placeholder="Large" wrapperClassName="preview-field" />
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Resizable</h2>
+            <div className="preview-row">
+              <WtkTextarea
+                label="Not resizable"
+                rows={3}
+                placeholder="resize: none"
+                wrapperClassName="preview-field"
+              />
+              <WtkTextarea
+                label="Vertical"
+                resizable="vertical"
+                rows={3}
+                placeholder="Drag the bottom edge"
+                wrapperClassName="preview-field"
+              />
+              <WtkTextarea
+                label="Horizontal"
+                resizable="horizontal"
+                rows={3}
+                placeholder="Drag the side"
+                wrapperClassName="preview-field"
+              />
+              <WtkTextarea
+                label="Bidirectional"
+                resizable="bidirectional"
+                rows={3}
+                placeholder="Drag the corner"
+                wrapperClassName="preview-field"
+              />
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">States</h2>
+            <div className="preview-row">
+              <WtkTextarea rows={3} placeholder="Default" wrapperClassName="preview-field preview-field--wide" />
+              <WtkTextarea
+                rows={3}
+                defaultValue="Disabled"
+                disabled
+                wrapperClassName="preview-field preview-field--wide"
+              />
+              <WtkTextarea
+                rows={3}
+                defaultValue="Read only"
+                readOnly
+                wrapperClassName="preview-field preview-field--wide"
+              />
+            </div>
+            <div className="preview-row">
+              <WtkTextarea
+                label="Description"
+                rows={3}
+                defaultValue="Too short"
+                error="Must be at least 20 characters"
+                wrapperClassName="preview-field preview-field--wide"
               />
             </div>
           </section>
