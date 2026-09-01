@@ -155,7 +155,7 @@ hr {
 }
 
 ::placeholder {
-	color: var(--wtk-entry-placeholder-fg);
+	color: var(--wtk-input-placeholder-fg);
 	opacity: 1;
 }
 

@@ -137,6 +137,7 @@
 	--wtk-light-overlay-color: rgba(0, 0, 0, 0.35);
 	--wtk-light-highlight-color: rgba(255, 255, 255, 0.8);
 	--wtk-light-focus-ring: rgba(53, 132, 228, 0.4);
+	--wtk-light-focus-ring-error: rgba(224, 27, 36, 0.35);
 }
 
 /*
@@ -187,6 +188,7 @@
 	--wtk-dark-overlay-color: rgba(0, 0, 0, 0.55);
 	--wtk-dark-highlight-color: rgba(255, 255, 255, 0.06);
 	--wtk-dark-focus-ring: rgba(53, 132, 228, 0.5);
+	--wtk-dark-focus-ring-error: rgba(217, 43, 50, 0.45);
 }
 
 /*
@@ -239,6 +241,7 @@
 	--wtk-overlay-color: var(--wtk-light-overlay-color);
 	--wtk-highlight-color: var(--wtk-light-highlight-color);
 	--wtk-focus-ring: var(--wtk-light-focus-ring);
+	--wtk-focus-ring-error: var(--wtk-light-focus-ring-error);
 }
 
 /*
@@ -291,6 +294,7 @@
 	--wtk-overlay-color: var(--wtk-dark-overlay-color);
 	--wtk-highlight-color: var(--wtk-dark-highlight-color);
 	--wtk-focus-ring: var(--wtk-dark-focus-ring);
+	--wtk-focus-ring-error: var(--wtk-dark-focus-ring-error);
 }
 
 /*
@@ -345,6 +349,7 @@
 		--wtk-overlay-color: var(--wtk-dark-overlay-color);
 		--wtk-highlight-color: var(--wtk-dark-highlight-color);
 		--wtk-focus-ring: var(--wtk-dark-focus-ring);
+		--wtk-focus-ring-error: var(--wtk-dark-focus-ring-error);
 	}
 }
 
@@ -375,6 +380,7 @@
 	*** Shared decoration
 	*/
 	--wtk-focus-ring-color: var(--wtk-focus-ring);
+	--wtk-focus-ring-color-error: var(--wtk-focus-ring-error);
 	--wtk-selection-bg: var(--wtk-accent);
 	--wtk-selection-fg: var(--wtk-accent-fg);
 	--wtk-separator-color: var(--wtk-stroke-weak);
@@ -426,20 +432,22 @@
 	--wtk-btn-flat-fg: var(--wtk-fg);
 
 	/*
-	*** Entry, text area, search field
+	*** Input, text area, search field
 	*/
-	--wtk-entry-bg: var(--wtk-surface-base);
-	--wtk-entry-bg-disabled: var(--wtk-surface-window);
-	--wtk-entry-fg: var(--wtk-fg);
-	--wtk-entry-fg-disabled: var(--wtk-fg-disabled);
-	--wtk-entry-placeholder-fg: var(--wtk-fg-muted);
-	--wtk-entry-border: var(--wtk-stroke);
-	--wtk-entry-border-hover: var(--wtk-stroke-strong);
-	--wtk-entry-border-focus: var(--wtk-accent);
-	--wtk-entry-border-error: var(--wtk-destructive);
-	--wtk-entry-border-warning: var(--wtk-warning);
-	--wtk-entry-selection-bg: var(--wtk-accent);
-	--wtk-entry-selection-fg: var(--wtk-accent-fg);
+	--wtk-input-bg: var(--wtk-surface-base);
+	--wtk-input-bg-disabled: var(--wtk-surface-window);
+	--wtk-input-fg: var(--wtk-fg);
+	--wtk-input-fg-disabled: var(--wtk-fg-disabled);
+	--wtk-input-placeholder-fg: var(--wtk-fg-muted);
+	--wtk-input-border: var(--wtk-stroke);
+	--wtk-input-border-hover: var(--wtk-stroke-strong);
+	--wtk-input-border-focus: var(--wtk-accent);
+	--wtk-input-border-error: var(--wtk-destructive);
+	--wtk-input-border-warning: var(--wtk-warning);
+	--wtk-input-selection-bg: var(--wtk-accent);
+	--wtk-input-selection-fg: var(--wtk-accent-fg);
+	--wtk-input-label-fg: var(--wtk-fg);
+	--wtk-input-error-fg: var(--wtk-destructive);
 
 	/*
 	*** Header bar
