@@ -1,6 +1,7 @@
 import { type FC, useEffect, useState } from 'react';
 
 import WtkButton from './components/WtkButton/WtkButton';
+import WtkCheckbox from './components/WtkCheckbox/WtkCheckbox';
 import WtkInput from './components/WtkInput/WtkInput';
 import WtkTextarea from './components/WtkTextarea/WtkTextarea';
 
@@ -34,6 +35,7 @@ const ChevronIcon: FC = () => (
 const App = () => {
   const [theme, setTheme] = useState<ThemeChoiceType>('system');
   const [isPinned, setIsPinned] = useState(false);
+  const [isTelemetryOn, setIsTelemetryOn] = useState(false);
 
   useEffect(() => {
     if (theme === 'system') {
@@ -261,6 +263,50 @@ const App = () => {
                 error="Must be at least 20 characters"
                 wrapperClassName="preview-field preview-field--wide"
               />
+            </div>
+          </section>
+        </section>
+
+        <section className="preview-component">
+          <h1 className="preview-component-title">WtkCheckbox</h1>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">States</h2>
+            <div className="preview-row">
+              <span className="preview-row-label">Enabled</span>
+              <WtkCheckbox label="Unchecked" />
+              <WtkCheckbox label="Checked" defaultChecked />
+              <WtkCheckbox label="Indeterminate" isIndeterminate />
+            </div>
+            <div className="preview-row">
+              <span className="preview-row-label">Disabled</span>
+              <WtkCheckbox label="Unchecked" disabled />
+              <WtkCheckbox label="Checked" defaultChecked disabled />
+              <WtkCheckbox label="Indeterminate" isIndeterminate disabled />
+            </div>
+            <div className="preview-row">
+              <span className="preview-row-label">No label</span>
+              <WtkCheckbox />
+              <WtkCheckbox defaultChecked />
+              <WtkCheckbox isIndeterminate />
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Controlled</h2>
+            <div className="preview-row">
+              <WtkCheckbox
+                label={isTelemetryOn ? 'Telemetry enabled' : 'Telemetry disabled'}
+                checked={isTelemetryOn}
+                onChange={(event) => setIsTelemetryOn(event.target.checked)}
+              />
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Error</h2>
+            <div className="preview-row">
+              <WtkCheckbox label="Accept the terms" error="You must accept to continue" />
             </div>
           </section>
         </section>
