@@ -1,17 +1,57 @@
 {
   "name": "wtk-ui",
-  "private": true,
   "version": "0.1.0",
+  "description": "React component library that reproduces the look and density of a GTK3 desktop toolkit.",
+  "keywords": [
+    "react",
+    "component-library",
+    "gtk",
+    "desktop",
+    "tauri",
+    "electron",
+    "ui"
+  ],
+  "license": "MIT",
+  "author": "Albert Arakelyan",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlbertArakelyan/wtk-ui-react.git"
+  },
+  "homepage": "https://github.com/AlbertArakelyan/wtk-ui-react#readme",
+  "bugs": {
+    "url": "https://github.com/AlbertArakelyan/wtk-ui-react/issues"
+  },
+  "private": false,
   "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/wtk-ui.cjs",
+  "module": "./dist/wtk-ui.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/wtk-ui.js",
+      "require": "./dist/wtk-ui.cjs"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && tsc -p tsconfig.build.json && node scripts/clean-dts.mjs",
+    "build:demo": "tsc -b && vite build --mode demo",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview --outDir dist-demo",
+    "prepare": "yarn build"
   },
-  "dependencies": {
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+  "peerDependencies": {
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -23,6 +63,8 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.4",
     "globals": "^17.11.0",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.67.0",
     "vite": "^8.2.2"
