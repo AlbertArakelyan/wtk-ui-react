@@ -5,7 +5,7 @@
  * src, always import from the file that defines the thing, never from here.
  *
  * The stylesheet is imported so the build emits dist/styles.css. It is not
- * injected into the consumer's page: they import 'wtk-ui/styles.css' themselves.
+ * injected into the consumer's page: they import 'wtk-ui-react/styles.css' themselves.
  */
 
 import './styles/style.css';

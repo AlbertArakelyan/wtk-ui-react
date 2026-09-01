@@ -1,5 +1,5 @@
 {
-  "name": "wtk-ui",
+  "name": "wtk-ui-react",
   "version": "0.1.0",
   "description": "React component library that reproduces the look and density of a GTK3 desktop toolkit.",
   "keywords": [
@@ -29,14 +29,14 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/wtk-ui.cjs",
-  "module": "./dist/wtk-ui.js",
+  "main": "./dist/wtk-ui-react.cjs",
+  "module": "./dist/wtk-ui-react.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/wtk-ui.js",
-      "require": "./dist/wtk-ui.cjs"
+      "import": "./dist/wtk-ui-react.js",
+      "require": "./dist/wtk-ui-react.cjs"
     },
     "./styles.css": "./dist/styles.css",
     "./package.json": "./package.json"
