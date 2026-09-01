@@ -1,122 +1,138 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import { type FC, useEffect, useState } from 'react';
 
-function App() {
-  const [count, setCount] = useState(0)
+import WtkButton from './components/WtkButton/WtkButton';
+
+type ThemeChoiceType = 'system' | 'light' | 'dark';
+
+const PlusIcon: FC = () => (
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+    <path d="M8 3.5v9M3.5 8h9" />
+  </svg>
+);
+
+const TrashIcon: FC = () => (
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
+    <path d="M3 5h10M6.5 5V3.5h3V5M4.5 5l.5 8h6l.5-8M6.5 7.5v3.5M9.5 7.5v3.5" />
+  </svg>
+);
+
+const ChevronIcon: FC = () => (
+  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.6">
+    <path d="M6 4l4 4-4 4" />
+  </svg>
+);
+
+const App = () => {
+  const [theme, setTheme] = useState<ThemeChoiceType>('system');
+  const [isPinned, setIsPinned] = useState(false);
+
+  useEffect(() => {
+    if (theme === 'system') {
+      delete document.documentElement.dataset.theme;
+      return;
+    }
+
+    document.documentElement.dataset.theme = theme;
+  }, [theme]);
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="preview">
+      <header className="preview-header">
+        <span className="preview-title">WTK component preview</span>
+        <div className="preview-theme">
+          <span className="preview-theme-label">Theme</span>
+          <WtkButton size="sm" variant="flat" isChecked={theme === 'light'} onClick={() => setTheme('light')}>
+            Light
+          </WtkButton>
+          <WtkButton size="sm" variant="flat" isChecked={theme === 'dark'} onClick={() => setTheme('dark')}>
+            Dark
+          </WtkButton>
+          <WtkButton size="sm" variant="flat" isChecked={theme === 'system'} onClick={() => setTheme('system')}>
+            System
+          </WtkButton>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+      </header>
 
-      <div className="ticks"></div>
+      <div className="preview-body">
+        <section className="preview-component">
+          <h1 className="preview-component-title">WtkButton</h1>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+          <section className="preview-section">
+            <h2 className="preview-section-title">Variants</h2>
+            <div className="preview-row">
+              <WtkButton>Normal</WtkButton>
+              <WtkButton variant="suggested">Suggested</WtkButton>
+              <WtkButton variant="destructive">Destructive</WtkButton>
+              <WtkButton variant="flat">Flat</WtkButton>
+            </div>
+          </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
-}
+          <section className="preview-section">
+            <h2 className="preview-section-title">Sizes</h2>
+            <div className="preview-row">
+              <WtkButton size="sm">Small</WtkButton>
+              <WtkButton size="md">Medium</WtkButton>
+              <WtkButton size="lg">Large</WtkButton>
+            </div>
+            <div className="preview-row">
+              <WtkButton size="sm" variant="suggested">Small</WtkButton>
+              <WtkButton size="md" variant="suggested">Medium</WtkButton>
+              <WtkButton size="lg" variant="suggested">Large</WtkButton>
+            </div>
+          </section>
 
-export default App
+          <section className="preview-section">
+            <h2 className="preview-section-title">States</h2>
+            <div className="preview-row">
+              <span className="preview-row-label">Normal</span>
+              <WtkButton>Default</WtkButton>
+              <WtkButton isChecked>Checked</WtkButton>
+              <WtkButton disabled>Disabled</WtkButton>
+            </div>
+            <div className="preview-row">
+              <span className="preview-row-label">Suggested</span>
+              <WtkButton variant="suggested">Default</WtkButton>
+              <WtkButton variant="suggested" disabled>Disabled</WtkButton>
+            </div>
+            <div className="preview-row">
+              <span className="preview-row-label">Destructive</span>
+              <WtkButton variant="destructive">Default</WtkButton>
+              <WtkButton variant="destructive" disabled>Disabled</WtkButton>
+            </div>
+            <div className="preview-row">
+              <span className="preview-row-label">Flat</span>
+              <WtkButton variant="flat">Default</WtkButton>
+              <WtkButton variant="flat" isChecked>Checked</WtkButton>
+              <WtkButton variant="flat" disabled>Disabled</WtkButton>
+            </div>
+            <div className="preview-row">
+              <span className="preview-row-label">Toggle</span>
+              <WtkButton isChecked={isPinned} onClick={() => setIsPinned(!isPinned)}>
+                {isPinned ? 'Pinned' : 'Not pinned'}
+              </WtkButton>
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Icons</h2>
+            <div className="preview-row">
+              <WtkButton icon={<PlusIcon />}>Add</WtkButton>
+              <WtkButton icon={<ChevronIcon />} iconPosition="right">Next</WtkButton>
+              <WtkButton variant="destructive" icon={<TrashIcon />}>Delete</WtkButton>
+              <WtkButton variant="suggested" icon={<PlusIcon />} iconPosition="right">Create</WtkButton>
+            </div>
+            <div className="preview-row">
+              <span className="preview-row-label">Icon only</span>
+              <WtkButton size="square-icon" icon={<PlusIcon />} />
+              <WtkButton size="square-icon" variant="flat" icon={<ChevronIcon />} />
+              <WtkButton size="square-icon" variant="destructive" icon={<TrashIcon />} />
+              <WtkButton size="square-icon" icon={<PlusIcon />} disabled />
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
+  );
+};
+
+export default App;

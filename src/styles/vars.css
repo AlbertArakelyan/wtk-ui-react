@@ -405,7 +405,9 @@
 	--wtk-btn-fg: var(--wtk-fg);
 	--wtk-btn-fg-disabled: var(--wtk-fg-disabled);
 	--wtk-btn-border: var(--wtk-stroke);
-	--wtk-btn-border-disabled: var(--wtk-stroke-weak);
+	/* full strength, not stroke-weak: a weak border makes an insensitive button
+	   vanish into the window background, in dark especially */
+	--wtk-btn-border-disabled: var(--wtk-stroke);
 
 	--wtk-btn-suggested-bg: var(--wtk-accent);
 	--wtk-btn-suggested-bg-hover: var(--wtk-accent-hover);

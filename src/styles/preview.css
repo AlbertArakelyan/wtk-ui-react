@@ -1,0 +1,105 @@
+/*
+ * Layout for the preview harness in src/App.tsx. Demo only, not part of the
+ * library. Delete this file and its @import once a real app shell exists.
+ * Classes are preview-* so they can never be mistaken for toolkit CSS.
+ */
+
+.preview {
+	display: grid;
+	grid-template-rows: auto 1fr;
+	height: 100%;
+	background-color: var(--wtk-bg-window);
+}
+
+.preview-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--wtk-spacing-lg);
+	height: var(--wtk-headerbar-height);
+	padding: 0 var(--wtk-spacing-lg);
+	color: var(--wtk-headerbar-fg);
+	background-color: var(--wtk-headerbar-bg);
+	border-bottom: var(--wtk-border-width) solid var(--wtk-headerbar-border);
+}
+
+.preview-title {
+	font-size: var(--wtk-font-size-base);
+	font-weight: var(--wtk-font-weight-bold);
+	color: var(--wtk-headerbar-title-fg);
+}
+
+.preview-theme {
+	display: flex;
+	align-items: center;
+	gap: var(--wtk-spacing-sm);
+}
+
+.preview-theme-label {
+	font-size: var(--wtk-font-size-small);
+	color: var(--wtk-color-text-muted);
+}
+
+/* the only scrolling region on the page, per SPEC.md section 6 */
+.preview-body {
+	overflow-y: auto;
+	padding: var(--wtk-spacing-lg);
+}
+
+/* one block per component, so the page stays readable as controls are added */
+.preview-component {
+	padding-bottom: var(--wtk-spacing-xl);
+	margin-bottom: var(--wtk-spacing-xl);
+	border-bottom: var(--wtk-border-width) solid var(--wtk-border-color);
+}
+
+.preview-component:last-child {
+	padding-bottom: 0;
+	margin-bottom: 0;
+	border-bottom: 0;
+}
+
+.preview-component-title {
+	margin-bottom: var(--wtk-spacing-lg);
+	font-size: var(--wtk-font-size-large);
+	font-weight: var(--wtk-font-weight-bold);
+	color: var(--wtk-color-text-strong);
+}
+
+.preview-section {
+	padding-bottom: var(--wtk-spacing-lg);
+	margin-bottom: var(--wtk-spacing-lg);
+	border-bottom: var(--wtk-border-width) solid var(--wtk-separator-color);
+}
+
+.preview-section:last-child {
+	padding-bottom: 0;
+	margin-bottom: 0;
+	border-bottom: 0;
+}
+
+.preview-section-title {
+	margin-bottom: var(--wtk-spacing-md);
+	font-size: var(--wtk-font-size-small);
+	font-weight: var(--wtk-font-weight-bold);
+	color: var(--wtk-color-text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.4px;
+}
+
+.preview-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--wtk-spacing-md);
+}
+
+.preview-row + .preview-row {
+	margin-top: var(--wtk-spacing-md);
+}
+
+.preview-row-label {
+	min-width: 96px;
+	font-size: var(--wtk-font-size-small);
+	color: var(--wtk-color-text-muted);
+}

@@ -1,0 +1,144 @@
+.wtk-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: var(--wtk-control-height);
+	padding: 0 var(--wtk-spacing-lg);
+	font-family: var(--wtk-font-family);
+	font-size: var(--wtk-font-size-base);
+	font-weight: var(--wtk-font-weight-normal);
+	line-height: 1;
+	color: var(--wtk-btn-fg);
+	background-color: var(--wtk-btn-bg);
+	border: var(--wtk-border-width) solid var(--wtk-btn-border);
+	border-radius: var(--wtk-border-radius);
+	box-shadow: var(--wtk-highlight-inset);
+	user-select: none;
+	transition:
+		background-color var(--wtk-transition) var(--wtk-easing),
+		border-color var(--wtk-transition) var(--wtk-easing),
+		color var(--wtk-transition) var(--wtk-easing);
+
+	&:hover:not(:disabled) {
+		background-color: var(--wtk-btn-bg-hover);
+	}
+
+	&:active:not(:disabled) {
+		background-color: var(--wtk-btn-bg-active);
+		box-shadow: none;
+	}
+
+	&:focus-visible {
+		border-color: var(--wtk-border-color-focus);
+		box-shadow: 0 0 0 var(--wtk-focus-ring-width) var(--wtk-focus-ring-color);
+	}
+
+	&:disabled {
+		color: var(--wtk-btn-fg-disabled);
+		background-color: var(--wtk-btn-bg-disabled);
+		border-color: var(--wtk-btn-border-disabled);
+		box-shadow: none;
+	}
+}
+
+/* the icon and the label sit on one row, so no per-icon margins are needed */
+.wtk-btn__container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: var(--wtk-spacing-sm);
+}
+
+.wtk-btn__content {
+	display: flex;
+	align-items: center;
+}
+
+.wtk-btn svg {
+	flex-shrink: 0;
+	width: var(--wtk-icon-size);
+	height: var(--wtk-icon-size);
+}
+
+/* sizes */
+.wtk-btn--sm {
+	height: var(--wtk-control-height-sm);
+	padding: 0 var(--wtk-spacing-md);
+	font-size: var(--wtk-font-size-small);
+}
+
+.wtk-btn--md {
+	height: var(--wtk-control-height);
+	padding: 0 var(--wtk-spacing-lg);
+}
+
+.wtk-btn--lg {
+	height: var(--wtk-control-height-lg);
+	padding: 0 var(--wtk-spacing-xl);
+	font-size: var(--wtk-font-size-large);
+}
+
+.wtk-btn--square-icon {
+	width: var(--wtk-control-height);
+	height: var(--wtk-control-height);
+	padding: 0;
+}
+
+/* variants */
+.wtk-btn--suggested {
+	color: var(--wtk-btn-suggested-fg);
+	background-color: var(--wtk-btn-suggested-bg);
+	border-color: var(--wtk-btn-suggested-border);
+
+	&:hover:not(:disabled) {
+		background-color: var(--wtk-btn-suggested-bg-hover);
+	}
+
+	&:active:not(:disabled) {
+		background-color: var(--wtk-btn-suggested-bg-active);
+	}
+}
+
+.wtk-btn--destructive {
+	color: var(--wtk-btn-destructive-fg);
+	background-color: var(--wtk-btn-destructive-bg);
+	border-color: var(--wtk-btn-destructive-border);
+
+	&:hover:not(:disabled) {
+		background-color: var(--wtk-btn-destructive-bg-hover);
+	}
+
+	&:active:not(:disabled) {
+		background-color: var(--wtk-btn-destructive-bg-active);
+	}
+}
+
+.wtk-btn--flat {
+	color: var(--wtk-btn-flat-fg);
+	background-color: transparent;
+	border-color: transparent;
+	box-shadow: none;
+
+	&:hover:not(:disabled) {
+		background-color: var(--wtk-btn-flat-bg-hover);
+	}
+
+	&:active:not(:disabled) {
+		background-color: var(--wtk-btn-flat-bg-active);
+	}
+
+	&:disabled {
+		background-color: transparent;
+		border-color: transparent;
+	}
+}
+
+/* toggled on, the pressed look without the pointer being down */
+.wtk-btn--checked {
+	background-color: var(--wtk-btn-bg-checked);
+	box-shadow: none;
+}
+
+.wtk-btn--checked.wtk-btn--flat {
+	border-color: var(--wtk-btn-border);
+}
