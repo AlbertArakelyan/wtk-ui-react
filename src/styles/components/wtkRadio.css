@@ -1,0 +1,110 @@
+.wtk-radio-wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: var(--wtk-spacing-xs);
+}
+
+/* the whole row is the hit target, the way a native radio button behaves */
+.wtk-radio {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+	gap: var(--wtk-spacing-md);
+	cursor: default;
+}
+
+/*
+*** The real input stays in the tab order and keeps handling clicks and arrow
+*** key group navigation. It is only made invisible.
+*/
+.wtk-radio__input {
+	position: absolute;
+	left: 0;
+	width: var(--wtk-radio-size);
+	height: var(--wtk-radio-size);
+	margin: 0;
+	opacity: 0;
+}
+
+/* the only structural difference from the check box: it is a circle */
+.wtk-radio__indicator {
+	position: relative;
+	display: flex;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	width: var(--wtk-radio-size);
+	height: var(--wtk-radio-size);
+	color: var(--wtk-radio-dot-fg);
+	background-color: var(--wtk-radio-bg);
+	border: var(--wtk-border-width) solid var(--wtk-radio-border);
+	border-radius: var(--wtk-border-radius-pill);
+	transition:
+		background-color var(--wtk-transition) var(--wtk-easing),
+		border-color var(--wtk-transition) var(--wtk-easing),
+		box-shadow var(--wtk-transition) var(--wtk-easing);
+}
+
+.wtk-radio__dot {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: opacity var(--wtk-transition) var(--wtk-easing);
+}
+
+.wtk-radio__label {
+	font-size: var(--wtk-font-size-base);
+	color: var(--wtk-radio-label-fg);
+}
+
+.wtk-radio__error {
+	font-size: var(--wtk-font-size-small);
+	color: var(--wtk-radio-error-fg);
+}
+
+/* hover */
+.wtk-radio__input:hover:not(:disabled) + .wtk-radio__indicator {
+	background-color: var(--wtk-radio-bg-hover);
+}
+
+/* checked */
+.wtk-radio__input:checked + .wtk-radio__indicator {
+	background-color: var(--wtk-radio-bg-checked);
+	border-color: var(--wtk-radio-border-checked);
+}
+
+.wtk-radio__input:checked + .wtk-radio__indicator .wtk-radio__dot {
+	opacity: 1;
+}
+
+.wtk-radio__input:checked:hover:not(:disabled) + .wtk-radio__indicator {
+	background-color: var(--wtk-radio-bg-checked-hover);
+}
+
+/* focus: the ring goes on the indicator, since the input itself is invisible */
+.wtk-radio__input:focus-visible + .wtk-radio__indicator {
+	border-color: var(--wtk-border-color-focus);
+	box-shadow: 0 0 0 var(--wtk-focus-ring-width) var(--wtk-focus-ring-color);
+}
+
+/* disabled */
+.wtk-radio__input:disabled + .wtk-radio__indicator {
+	color: var(--wtk-radio-dot-fg-disabled);
+	background-color: var(--wtk-radio-bg-disabled);
+	border-color: var(--wtk-border-color);
+}
+
+.wtk-radio__input:disabled ~ .wtk-radio__label {
+	color: var(--wtk-color-text-disabled);
+}
+
+/* error */
+.wtk-radio--error .wtk-radio__indicator {
+	border-color: var(--wtk-radio-border-error);
+}
+
+.wtk-radio--error .wtk-radio__input:focus-visible + .wtk-radio__indicator {
+	border-color: var(--wtk-radio-border-error);
+	box-shadow: 0 0 0 var(--wtk-focus-ring-width) var(--wtk-focus-ring-color-error);
+}

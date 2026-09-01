@@ -61,6 +61,7 @@
 	--wtk-switch-width: 40px;
 	--wtk-switch-height: 22px;
 	--wtk-check-size: 16px;
+	--wtk-radio-size: 16px;
 	--wtk-scrollbar-size: 10px;
 	--wtk-scrollbar-size-hover: 14px;
 	--wtk-textarea-min-height: 64px;
@@ -541,7 +542,7 @@
 	--wtk-scale-mark-color: var(--wtk-fg-muted);
 
 	/*
-	*** Check box and radio button
+	*** Check box
 	*/
 	--wtk-check-bg: var(--wtk-surface-base);
 	--wtk-check-bg-hover: var(--wtk-surface-hover);
@@ -555,6 +556,23 @@
 	--wtk-check-mark-fg-disabled: var(--wtk-fg-disabled);
 	--wtk-check-label-fg: var(--wtk-fg);
 	--wtk-check-error-fg: var(--wtk-destructive);
+
+	/*
+	*** Radio button. Same slots as the check box, kept separate so the two can
+	*** diverge without one dragging the other along.
+	*/
+	--wtk-radio-bg: var(--wtk-surface-base);
+	--wtk-radio-bg-hover: var(--wtk-surface-hover);
+	--wtk-radio-bg-checked: var(--wtk-accent);
+	--wtk-radio-bg-checked-hover: var(--wtk-accent-hover);
+	--wtk-radio-bg-disabled: var(--wtk-surface-window);
+	--wtk-radio-border: var(--wtk-stroke-strong);
+	--wtk-radio-border-checked: var(--wtk-accent-active);
+	--wtk-radio-border-error: var(--wtk-destructive);
+	--wtk-radio-dot-fg: var(--wtk-accent-fg);
+	--wtk-radio-dot-fg-disabled: var(--wtk-fg-disabled);
+	--wtk-radio-label-fg: var(--wtk-fg);
+	--wtk-radio-error-fg: var(--wtk-destructive);
 
 	/*
 	*** Progress bar and level bar

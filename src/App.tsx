@@ -3,6 +3,7 @@ import { type FC, useEffect, useState } from 'react';
 import WtkButton from './components/WtkButton/WtkButton';
 import WtkCheckbox from './components/WtkCheckbox/WtkCheckbox';
 import WtkInput from './components/WtkInput/WtkInput';
+import WtkRadio from './components/WtkRadio/WtkRadio';
 import WtkTextarea from './components/WtkTextarea/WtkTextarea';
 
 type ThemeChoiceType = 'system' | 'light' | 'dark';
@@ -36,6 +37,7 @@ const App = () => {
   const [theme, setTheme] = useState<ThemeChoiceType>('system');
   const [isPinned, setIsPinned] = useState(false);
   const [isTelemetryOn, setIsTelemetryOn] = useState(false);
+  const [zone, setZone] = useState('center');
 
   useEffect(() => {
     if (theme === 'system') {
@@ -307,6 +309,54 @@ const App = () => {
             <h2 className="preview-section-title">Error</h2>
             <div className="preview-row">
               <WtkCheckbox label="Accept the terms" error="You must accept to continue" />
+            </div>
+          </section>
+        </section>
+
+        <section className="preview-component">
+          <h1 className="preview-component-title">WtkRadio</h1>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Group</h2>
+            <div className="preview-row">
+              <span className="preview-row-label">Enabled</span>
+              <WtkRadio name="preview-align" value="left" label="Left" defaultChecked />
+              <WtkRadio name="preview-align" value="center" label="Center" />
+              <WtkRadio name="preview-align" value="right" label="Right" />
+            </div>
+            <div className="preview-row">
+              <span className="preview-row-label">Disabled</span>
+              <WtkRadio name="preview-align-disabled" value="left" label="Left" defaultChecked disabled />
+              <WtkRadio name="preview-align-disabled" value="center" label="Center" disabled />
+            </div>
+            <div className="preview-row">
+              <span className="preview-row-label">No label</span>
+              <WtkRadio name="preview-bare" value="a" defaultChecked />
+              <WtkRadio name="preview-bare" value="b" />
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Controlled</h2>
+            <div className="preview-row">
+              {['left', 'center', 'right'].map((value) => (
+                <WtkRadio
+                  key={value}
+                  name="preview-zone"
+                  value={value}
+                  label={value}
+                  checked={zone === value}
+                  onChange={(event) => setZone(event.target.value)}
+                />
+              ))}
+              <span className="preview-row-label">selected: {zone}</span>
+            </div>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Error</h2>
+            <div className="preview-row">
+              <WtkRadio name="preview-plan" value="free" label="Pick a plan" error="A selection is required" />
             </div>
           </section>
         </section>
