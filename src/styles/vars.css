@@ -1,0 +1,639 @@
+/*
+ * WTK design tokens.
+ *
+ * Three tiers, in file order:
+ *   1. Primitives. Typography, spacing, radii, metrics, motion. Not themed.
+ *   2. Theme slots. Raw colors per theme, then the slot each theme maps onto.
+ *      This is the only part a theme overrides.
+ *   3. Semantic and per-component tokens. Written once, in terms of tier 2.
+ *
+ * Components read tier 3 only. Adding a color for a new control means one line
+ * in tier 3, not one line per theme.
+ */
+
+/* ============================================================
+ * Tier 1: primitives
+ * ============================================================ */
+
+:root {
+	/*
+	*** Typography
+	*/
+	--wtk-font-family: Ubuntu, Cantarell, "Segoe UI", system-ui, sans-serif;
+	--wtk-font-family-mono: "Ubuntu Mono", ui-monospace, Consolas, monospace;
+	--wtk-font-size-base: 13px;
+	--wtk-font-size-small: 11px;
+	--wtk-font-size-large: 15px;
+	--wtk-font-weight-normal: 400;
+	--wtk-font-weight-bold: 600;
+	--wtk-line-height: 1.4;
+
+	/*
+	*** Spacing. The canonical scale is 2/4/8/12px. xl is an addition for
+	*** window level padding, not part of SPEC.md section 4.
+	*/
+	--wtk-spacing-xs: 2px;
+	--wtk-spacing-sm: 4px;
+	--wtk-spacing-md: 8px;
+	--wtk-spacing-lg: 12px;
+	--wtk-spacing-xl: 16px;
+
+	/*
+	*** Borders and radii. The pill radius is for the switch track only.
+	*/
+	--wtk-border-width: 1px;
+	--wtk-border-radius: 4px;
+	--wtk-border-radius-sm: 2px;
+	--wtk-border-radius-pill: 999px;
+	--wtk-focus-ring-width: 2px;
+
+	/*
+	*** Control metrics
+	*/
+	--wtk-control-height: 26px;
+	--wtk-control-height-sm: 22px;
+	--wtk-control-height-lg: 32px;
+	--wtk-headerbar-height: 38px;
+	--wtk-icon-size: 16px;
+	--wtk-icon-size-sm: 12px;
+	--wtk-scale-track-height: 4px;
+	--wtk-scale-thumb-size: 16px;
+	--wtk-switch-width: 40px;
+	--wtk-switch-height: 22px;
+	--wtk-check-size: 16px;
+	--wtk-scrollbar-size: 10px;
+	--wtk-scrollbar-size-hover: 14px;
+	--wtk-progress-height: 4px;
+	--wtk-separator-width: 1px;
+
+	/*
+	*** Motion
+	*/
+	--wtk-transition-fast: 80ms;
+	--wtk-transition: 150ms;
+	--wtk-easing: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+	/*
+	*** Stacking order
+	*/
+	--wtk-z-dropdown: 100;
+	--wtk-z-popover: 200;
+	--wtk-z-tooltip: 300;
+	--wtk-z-dialog: 400;
+}
+
+/* ============================================================
+ * Tier 2: theme slots
+ * ============================================================ */
+
+/*
+*** Raw light values. The window, base, text, muted text, border and accent
+*** colors are the ones fixed by SPEC.md section 4.
+*/
+:root {
+	--wtk-light-surface-base: #ffffff;
+	--wtk-light-surface-window: #f2f2f2;
+	--wtk-light-surface-raised: #fbfbfb;
+	--wtk-light-surface-hover: #ffffff;
+	--wtk-light-surface-active: #dedede;
+	--wtk-light-surface-sunken: #e8e8e8;
+	--wtk-light-surface-overlay: #ffffff;
+
+	--wtk-light-fg: #2c2c2c;
+	--wtk-light-fg-strong: #101010;
+	--wtk-light-fg-muted: #888888;
+	--wtk-light-fg-disabled: #b0b0b0;
+
+	--wtk-light-stroke-weak: #e4e4e4;
+	--wtk-light-stroke: #d1d1d1;
+	--wtk-light-stroke-strong: #b6b6b6;
+
+	--wtk-light-accent: #3584e4;
+	--wtk-light-accent-hover: #4a90e6;
+	--wtk-light-accent-active: #1c71d8;
+	--wtk-light-accent-fg: #ffffff;
+
+	--wtk-light-destructive: #e01b24;
+	--wtk-light-destructive-hover: #e8464e;
+	--wtk-light-destructive-active: #c01c28;
+	--wtk-light-destructive-fg: #ffffff;
+
+	--wtk-light-success: #2ec27e;
+	--wtk-light-success-fg: #ffffff;
+	--wtk-light-warning: #e5a50a;
+	--wtk-light-warning-fg: #1a1a1a;
+	--wtk-light-info: #3584e4;
+	--wtk-light-info-fg: #ffffff;
+
+	/* the knob is the movable part of a switch or a slider, light in both themes */
+	--wtk-light-knob: #ffffff;
+	--wtk-light-knob-border: #b6b6b6;
+
+	/* tooltips stay dark in both themes, the way native ones do */
+	--wtk-light-tooltip-bg: #383838;
+	--wtk-light-tooltip-fg: #ffffff;
+
+	--wtk-light-shadow-color: rgba(0, 0, 0, 0.16);
+	--wtk-light-overlay-color: rgba(0, 0, 0, 0.35);
+	--wtk-light-highlight-color: rgba(255, 255, 255, 0.8);
+	--wtk-light-focus-ring: rgba(53, 132, 228, 0.4);
+}
+
+/*
+*** Raw dark values. Same slots, same contrast relationships.
+*/
+:root {
+	--wtk-dark-surface-base: #1e1e1e;
+	--wtk-dark-surface-window: #2d2d2d;
+	--wtk-dark-surface-raised: #383838;
+	--wtk-dark-surface-hover: #424242;
+	--wtk-dark-surface-active: #4c4c4c;
+	--wtk-dark-surface-sunken: #232323;
+	--wtk-dark-surface-overlay: #333333;
+
+	--wtk-dark-fg: #eeeeee;
+	--wtk-dark-fg-strong: #ffffff;
+	--wtk-dark-fg-muted: #a3a3a3;
+	--wtk-dark-fg-disabled: #6b6b6b;
+
+	--wtk-dark-stroke-weak: #333333;
+	--wtk-dark-stroke: #1b1b1b;
+	--wtk-dark-stroke-strong: #101010;
+
+	--wtk-dark-accent: #3584e4;
+	--wtk-dark-accent-hover: #4a90e6;
+	--wtk-dark-accent-active: #1c71d8;
+	--wtk-dark-accent-fg: #ffffff;
+
+	--wtk-dark-destructive: #d92b32;
+	--wtk-dark-destructive-hover: #e8464e;
+	--wtk-dark-destructive-active: #c01c28;
+	--wtk-dark-destructive-fg: #ffffff;
+
+	--wtk-dark-success: #57e389;
+	--wtk-dark-success-fg: #10281c;
+	--wtk-dark-warning: #f8e45c;
+	--wtk-dark-warning-fg: #2b2405;
+	--wtk-dark-info: #62a0ea;
+	--wtk-dark-info-fg: #10233a;
+
+	--wtk-dark-knob: #d0d0d0;
+	--wtk-dark-knob-border: #101010;
+
+	--wtk-dark-tooltip-bg: #4a4a4a;
+	--wtk-dark-tooltip-fg: #ffffff;
+
+	--wtk-dark-shadow-color: rgba(0, 0, 0, 0.5);
+	--wtk-dark-overlay-color: rgba(0, 0, 0, 0.55);
+	--wtk-dark-highlight-color: rgba(255, 255, 255, 0.06);
+	--wtk-dark-focus-ring: rgba(53, 132, 228, 0.5);
+}
+
+/*
+*** Light is the default mapping.
+*/
+:root {
+	color-scheme: light;
+
+	--wtk-surface-base: var(--wtk-light-surface-base);
+	--wtk-surface-window: var(--wtk-light-surface-window);
+	--wtk-surface-raised: var(--wtk-light-surface-raised);
+	--wtk-surface-hover: var(--wtk-light-surface-hover);
+	--wtk-surface-active: var(--wtk-light-surface-active);
+	--wtk-surface-sunken: var(--wtk-light-surface-sunken);
+	--wtk-surface-overlay: var(--wtk-light-surface-overlay);
+
+	--wtk-fg: var(--wtk-light-fg);
+	--wtk-fg-strong: var(--wtk-light-fg-strong);
+	--wtk-fg-muted: var(--wtk-light-fg-muted);
+	--wtk-fg-disabled: var(--wtk-light-fg-disabled);
+
+	--wtk-stroke-weak: var(--wtk-light-stroke-weak);
+	--wtk-stroke: var(--wtk-light-stroke);
+	--wtk-stroke-strong: var(--wtk-light-stroke-strong);
+
+	--wtk-accent: var(--wtk-light-accent);
+	--wtk-accent-hover: var(--wtk-light-accent-hover);
+	--wtk-accent-active: var(--wtk-light-accent-active);
+	--wtk-accent-fg: var(--wtk-light-accent-fg);
+
+	--wtk-destructive: var(--wtk-light-destructive);
+	--wtk-destructive-hover: var(--wtk-light-destructive-hover);
+	--wtk-destructive-active: var(--wtk-light-destructive-active);
+	--wtk-destructive-fg: var(--wtk-light-destructive-fg);
+
+	--wtk-success: var(--wtk-light-success);
+	--wtk-success-fg: var(--wtk-light-success-fg);
+	--wtk-warning: var(--wtk-light-warning);
+	--wtk-warning-fg: var(--wtk-light-warning-fg);
+	--wtk-info: var(--wtk-light-info);
+	--wtk-info-fg: var(--wtk-light-info-fg);
+
+	--wtk-knob: var(--wtk-light-knob);
+	--wtk-knob-border: var(--wtk-light-knob-border);
+
+	--wtk-tooltip-surface: var(--wtk-light-tooltip-bg);
+	--wtk-tooltip-ink: var(--wtk-light-tooltip-fg);
+
+	--wtk-shadow-color: var(--wtk-light-shadow-color);
+	--wtk-overlay-color: var(--wtk-light-overlay-color);
+	--wtk-highlight-color: var(--wtk-light-highlight-color);
+	--wtk-focus-ring: var(--wtk-light-focus-ring);
+}
+
+/*
+*** Dark by explicit choice. Wins over the OS setting.
+*/
+:root[data-theme="dark"] {
+	color-scheme: dark;
+
+	--wtk-surface-base: var(--wtk-dark-surface-base);
+	--wtk-surface-window: var(--wtk-dark-surface-window);
+	--wtk-surface-raised: var(--wtk-dark-surface-raised);
+	--wtk-surface-hover: var(--wtk-dark-surface-hover);
+	--wtk-surface-active: var(--wtk-dark-surface-active);
+	--wtk-surface-sunken: var(--wtk-dark-surface-sunken);
+	--wtk-surface-overlay: var(--wtk-dark-surface-overlay);
+
+	--wtk-fg: var(--wtk-dark-fg);
+	--wtk-fg-strong: var(--wtk-dark-fg-strong);
+	--wtk-fg-muted: var(--wtk-dark-fg-muted);
+	--wtk-fg-disabled: var(--wtk-dark-fg-disabled);
+
+	--wtk-stroke-weak: var(--wtk-dark-stroke-weak);
+	--wtk-stroke: var(--wtk-dark-stroke);
+	--wtk-stroke-strong: var(--wtk-dark-stroke-strong);
+
+	--wtk-accent: var(--wtk-dark-accent);
+	--wtk-accent-hover: var(--wtk-dark-accent-hover);
+	--wtk-accent-active: var(--wtk-dark-accent-active);
+	--wtk-accent-fg: var(--wtk-dark-accent-fg);
+
+	--wtk-destructive: var(--wtk-dark-destructive);
+	--wtk-destructive-hover: var(--wtk-dark-destructive-hover);
+	--wtk-destructive-active: var(--wtk-dark-destructive-active);
+	--wtk-destructive-fg: var(--wtk-dark-destructive-fg);
+
+	--wtk-success: var(--wtk-dark-success);
+	--wtk-success-fg: var(--wtk-dark-success-fg);
+	--wtk-warning: var(--wtk-dark-warning);
+	--wtk-warning-fg: var(--wtk-dark-warning-fg);
+	--wtk-info: var(--wtk-dark-info);
+	--wtk-info-fg: var(--wtk-dark-info-fg);
+
+	--wtk-knob: var(--wtk-dark-knob);
+	--wtk-knob-border: var(--wtk-dark-knob-border);
+
+	--wtk-tooltip-surface: var(--wtk-dark-tooltip-bg);
+	--wtk-tooltip-ink: var(--wtk-dark-tooltip-fg);
+
+	--wtk-shadow-color: var(--wtk-dark-shadow-color);
+	--wtk-overlay-color: var(--wtk-dark-overlay-color);
+	--wtk-highlight-color: var(--wtk-dark-highlight-color);
+	--wtk-focus-ring: var(--wtk-dark-focus-ring);
+}
+
+/*
+*** Dark from the OS setting. The :not() guard is what lets
+*** data-theme="light" force the light theme on a dark desktop.
+*/
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme="light"]) {
+		color-scheme: dark;
+
+		--wtk-surface-base: var(--wtk-dark-surface-base);
+		--wtk-surface-window: var(--wtk-dark-surface-window);
+		--wtk-surface-raised: var(--wtk-dark-surface-raised);
+		--wtk-surface-hover: var(--wtk-dark-surface-hover);
+		--wtk-surface-active: var(--wtk-dark-surface-active);
+		--wtk-surface-sunken: var(--wtk-dark-surface-sunken);
+		--wtk-surface-overlay: var(--wtk-dark-surface-overlay);
+
+		--wtk-fg: var(--wtk-dark-fg);
+		--wtk-fg-strong: var(--wtk-dark-fg-strong);
+		--wtk-fg-muted: var(--wtk-dark-fg-muted);
+		--wtk-fg-disabled: var(--wtk-dark-fg-disabled);
+
+		--wtk-stroke-weak: var(--wtk-dark-stroke-weak);
+		--wtk-stroke: var(--wtk-dark-stroke);
+		--wtk-stroke-strong: var(--wtk-dark-stroke-strong);
+
+		--wtk-accent: var(--wtk-dark-accent);
+		--wtk-accent-hover: var(--wtk-dark-accent-hover);
+		--wtk-accent-active: var(--wtk-dark-accent-active);
+		--wtk-accent-fg: var(--wtk-dark-accent-fg);
+
+		--wtk-destructive: var(--wtk-dark-destructive);
+		--wtk-destructive-hover: var(--wtk-dark-destructive-hover);
+		--wtk-destructive-active: var(--wtk-dark-destructive-active);
+		--wtk-destructive-fg: var(--wtk-dark-destructive-fg);
+
+		--wtk-success: var(--wtk-dark-success);
+		--wtk-success-fg: var(--wtk-dark-success-fg);
+		--wtk-warning: var(--wtk-dark-warning);
+		--wtk-warning-fg: var(--wtk-dark-warning-fg);
+		--wtk-info: var(--wtk-dark-info);
+		--wtk-info-fg: var(--wtk-dark-info-fg);
+
+		--wtk-knob: var(--wtk-dark-knob);
+		--wtk-knob-border: var(--wtk-dark-knob-border);
+
+		--wtk-tooltip-surface: var(--wtk-dark-tooltip-bg);
+		--wtk-tooltip-ink: var(--wtk-dark-tooltip-fg);
+
+		--wtk-shadow-color: var(--wtk-dark-shadow-color);
+		--wtk-overlay-color: var(--wtk-dark-overlay-color);
+		--wtk-highlight-color: var(--wtk-dark-highlight-color);
+		--wtk-focus-ring: var(--wtk-dark-focus-ring);
+	}
+}
+
+/* ============================================================
+ * Tier 3: semantic and per-component
+ * ============================================================ */
+
+:root {
+	/*
+	*** Window and text. The names in this block are fixed by SPEC.md section 4.
+	*/
+	--wtk-bg-window: var(--wtk-surface-window);
+	--wtk-bg-base: var(--wtk-surface-base);
+	--wtk-bg-raised: var(--wtk-surface-raised);
+	--wtk-bg-sunken: var(--wtk-surface-sunken);
+	--wtk-color-text: var(--wtk-fg);
+	--wtk-color-text-strong: var(--wtk-fg-strong);
+	--wtk-color-text-muted: var(--wtk-fg-muted);
+	--wtk-color-text-disabled: var(--wtk-fg-disabled);
+	--wtk-border-color: var(--wtk-stroke);
+	--wtk-border-color-weak: var(--wtk-stroke-weak);
+	--wtk-border-color-strong: var(--wtk-stroke-strong);
+	--wtk-border-color-focus: var(--wtk-accent);
+	--wtk-bg-selected: var(--wtk-accent);
+	--wtk-fg-selected: var(--wtk-accent-fg);
+
+	/*
+	*** Shared decoration
+	*/
+	--wtk-focus-ring-color: var(--wtk-focus-ring);
+	--wtk-selection-bg: var(--wtk-accent);
+	--wtk-selection-fg: var(--wtk-accent-fg);
+	--wtk-separator-color: var(--wtk-stroke-weak);
+	--wtk-link-color: var(--wtk-accent);
+	--wtk-link-color-hover: var(--wtk-accent-hover);
+	--wtk-shadow-sm: 0 1px 2px var(--wtk-shadow-color);
+	--wtk-shadow-md: 0 2px 6px var(--wtk-shadow-color);
+	--wtk-shadow-lg: 0 6px 16px var(--wtk-shadow-color);
+	--wtk-highlight-inset: inset 0 1px 0 var(--wtk-highlight-color);
+
+	/*
+	*** Status text, for validation messages and inline hints
+	*/
+	--wtk-text-success: var(--wtk-success);
+	--wtk-text-warning: var(--wtk-warning);
+	--wtk-text-error: var(--wtk-destructive);
+	--wtk-text-info: var(--wtk-info);
+
+	/*
+	*** Button. The segmented and linked button rows reuse these tokens and
+	*** only change borders and radii.
+	*/
+	--wtk-btn-bg: var(--wtk-surface-raised);
+	--wtk-btn-bg-hover: var(--wtk-surface-hover);
+	--wtk-btn-bg-active: var(--wtk-surface-active);
+	--wtk-btn-bg-checked: var(--wtk-surface-active);
+	--wtk-btn-bg-disabled: var(--wtk-surface-window);
+	--wtk-btn-fg: var(--wtk-fg);
+	--wtk-btn-fg-disabled: var(--wtk-fg-disabled);
+	--wtk-btn-border: var(--wtk-stroke);
+	--wtk-btn-border-disabled: var(--wtk-stroke-weak);
+
+	--wtk-btn-suggested-bg: var(--wtk-accent);
+	--wtk-btn-suggested-bg-hover: var(--wtk-accent-hover);
+	--wtk-btn-suggested-bg-active: var(--wtk-accent-active);
+	--wtk-btn-suggested-fg: var(--wtk-accent-fg);
+	--wtk-btn-suggested-border: var(--wtk-accent-active);
+
+	--wtk-btn-destructive-bg: var(--wtk-destructive);
+	--wtk-btn-destructive-bg-hover: var(--wtk-destructive-hover);
+	--wtk-btn-destructive-bg-active: var(--wtk-destructive-active);
+	--wtk-btn-destructive-fg: var(--wtk-destructive-fg);
+	--wtk-btn-destructive-border: var(--wtk-destructive-active);
+
+	--wtk-btn-flat-bg-hover: var(--wtk-surface-hover);
+	--wtk-btn-flat-bg-active: var(--wtk-surface-active);
+	--wtk-btn-flat-fg: var(--wtk-fg);
+
+	/*
+	*** Entry, text area, search field
+	*/
+	--wtk-entry-bg: var(--wtk-surface-base);
+	--wtk-entry-bg-disabled: var(--wtk-surface-window);
+	--wtk-entry-fg: var(--wtk-fg);
+	--wtk-entry-fg-disabled: var(--wtk-fg-disabled);
+	--wtk-entry-placeholder-fg: var(--wtk-fg-muted);
+	--wtk-entry-border: var(--wtk-stroke);
+	--wtk-entry-border-hover: var(--wtk-stroke-strong);
+	--wtk-entry-border-focus: var(--wtk-accent);
+	--wtk-entry-border-error: var(--wtk-destructive);
+	--wtk-entry-border-warning: var(--wtk-warning);
+	--wtk-entry-selection-bg: var(--wtk-accent);
+	--wtk-entry-selection-fg: var(--wtk-accent-fg);
+
+	/*
+	*** Header bar
+	*/
+	--wtk-headerbar-bg: var(--wtk-surface-raised);
+	--wtk-headerbar-bg-backdrop: var(--wtk-surface-window);
+	--wtk-headerbar-fg: var(--wtk-fg);
+	--wtk-headerbar-title-fg: var(--wtk-fg-strong);
+	--wtk-headerbar-subtitle-fg: var(--wtk-fg-muted);
+	--wtk-headerbar-border: var(--wtk-stroke);
+
+	/*
+	*** Switch
+	*/
+	--wtk-switch-track-bg: var(--wtk-surface-sunken);
+	--wtk-switch-track-bg-checked: var(--wtk-accent);
+	--wtk-switch-track-bg-disabled: var(--wtk-surface-window);
+	--wtk-switch-track-border: var(--wtk-stroke);
+	--wtk-switch-thumb-bg: var(--wtk-knob);
+	--wtk-switch-thumb-border: var(--wtk-knob-border);
+	--wtk-switch-indicator-fg: var(--wtk-fg-muted);
+	--wtk-switch-indicator-fg-checked: var(--wtk-accent-fg);
+
+	/*
+	*** Spin button. The entry and the two steppers share a border.
+	*/
+	--wtk-spin-button-bg: var(--wtk-surface-base);
+	--wtk-spin-button-fg: var(--wtk-fg);
+	--wtk-spin-button-border: var(--wtk-stroke);
+	--wtk-spin-button-stepper-bg: var(--wtk-surface-raised);
+	--wtk-spin-button-stepper-bg-hover: var(--wtk-surface-hover);
+	--wtk-spin-button-stepper-bg-active: var(--wtk-surface-active);
+	--wtk-spin-button-stepper-fg: var(--wtk-fg);
+	--wtk-spin-button-stepper-fg-disabled: var(--wtk-fg-disabled);
+
+	/*
+	*** Combo box
+	*/
+	--wtk-combo-box-bg: var(--wtk-surface-raised);
+	--wtk-combo-box-bg-hover: var(--wtk-surface-hover);
+	--wtk-combo-box-bg-active: var(--wtk-surface-active);
+	--wtk-combo-box-fg: var(--wtk-fg);
+	--wtk-combo-box-fg-disabled: var(--wtk-fg-disabled);
+	--wtk-combo-box-border: var(--wtk-stroke);
+	--wtk-combo-box-arrow-fg: var(--wtk-fg-muted);
+
+	/*
+	*** Popover and menu
+	*/
+	--wtk-popover-bg: var(--wtk-surface-overlay);
+	--wtk-popover-fg: var(--wtk-fg);
+	--wtk-popover-border: var(--wtk-stroke);
+	--wtk-popover-shadow: var(--wtk-shadow-lg);
+	--wtk-menu-item-bg-hover: var(--wtk-surface-hover);
+	--wtk-menu-item-bg-selected: var(--wtk-accent);
+	--wtk-menu-item-fg: var(--wtk-fg);
+	--wtk-menu-item-fg-selected: var(--wtk-accent-fg);
+	--wtk-menu-item-fg-disabled: var(--wtk-fg-disabled);
+	--wtk-menu-accel-fg: var(--wtk-fg-muted);
+	--wtk-menu-separator-color: var(--wtk-stroke-weak);
+
+	/*
+	*** Scale
+	*/
+	--wtk-scale-track-bg: var(--wtk-surface-sunken);
+	--wtk-scale-track-border: var(--wtk-stroke-weak);
+	--wtk-scale-track-fill: var(--wtk-accent);
+	--wtk-scale-track-fill-disabled: var(--wtk-fg-disabled);
+	--wtk-scale-thumb-bg: var(--wtk-knob);
+	--wtk-scale-thumb-border: var(--wtk-knob-border);
+	--wtk-scale-mark-color: var(--wtk-fg-muted);
+
+	/*
+	*** Check box and radio button
+	*/
+	--wtk-check-bg: var(--wtk-surface-base);
+	--wtk-check-bg-checked: var(--wtk-accent);
+	--wtk-check-bg-disabled: var(--wtk-surface-window);
+	--wtk-check-border: var(--wtk-stroke-strong);
+	--wtk-check-border-checked: var(--wtk-accent-active);
+	--wtk-check-mark-fg: var(--wtk-accent-fg);
+	--wtk-check-mark-fg-disabled: var(--wtk-fg-disabled);
+
+	/*
+	*** Progress bar and level bar
+	*/
+	--wtk-progress-track-bg: var(--wtk-surface-sunken);
+	--wtk-progress-track-border: var(--wtk-stroke-weak);
+	--wtk-progress-fill: var(--wtk-accent);
+	--wtk-progress-fill-low: var(--wtk-warning);
+	--wtk-progress-fill-full: var(--wtk-success);
+	--wtk-progress-fg: var(--wtk-fg-muted);
+
+	/*
+	*** Scrollbar
+	*/
+	--wtk-scrollbar-trough-bg: var(--wtk-surface-sunken);
+	--wtk-scrollbar-trough-border: var(--wtk-stroke-weak);
+	--wtk-scrollbar-thumb-bg: var(--wtk-fg-disabled);
+	--wtk-scrollbar-thumb-bg-hover: var(--wtk-fg-muted);
+	--wtk-scrollbar-thumb-bg-active: var(--wtk-fg);
+
+	/*
+	*** Sidebar
+	*/
+	--wtk-sidebar-bg: var(--wtk-surface-window);
+	--wtk-sidebar-fg: var(--wtk-fg);
+	--wtk-sidebar-border: var(--wtk-stroke);
+	--wtk-sidebar-header-fg: var(--wtk-fg-muted);
+	--wtk-sidebar-row-bg-hover: var(--wtk-surface-hover);
+	--wtk-sidebar-row-bg-selected: var(--wtk-accent);
+	--wtk-sidebar-row-fg: var(--wtk-fg);
+	--wtk-sidebar-row-fg-selected: var(--wtk-accent-fg);
+
+	/*
+	*** List box and table rows
+	*/
+	--wtk-list-bg: var(--wtk-surface-base);
+	--wtk-list-row-bg-alt: var(--wtk-surface-window);
+	--wtk-list-row-bg-hover: var(--wtk-surface-hover);
+	--wtk-list-row-bg-selected: var(--wtk-accent);
+	--wtk-list-row-fg: var(--wtk-fg);
+	--wtk-list-row-fg-selected: var(--wtk-accent-fg);
+	--wtk-list-row-fg-muted: var(--wtk-fg-muted);
+	--wtk-list-row-border: var(--wtk-stroke-weak);
+
+	/*
+	*** Column header
+	*/
+	--wtk-column-header-bg: var(--wtk-surface-raised);
+	--wtk-column-header-bg-hover: var(--wtk-surface-hover);
+	--wtk-column-header-bg-active: var(--wtk-surface-active);
+	--wtk-column-header-fg: var(--wtk-fg);
+	--wtk-column-header-border: var(--wtk-stroke);
+
+	/*
+	*** Tooltip
+	*/
+	--wtk-tooltip-bg: var(--wtk-tooltip-surface);
+	--wtk-tooltip-fg: var(--wtk-tooltip-ink);
+	--wtk-tooltip-border: var(--wtk-stroke-strong);
+	--wtk-tooltip-shadow: var(--wtk-shadow-md);
+
+	/*
+	*** Tabs
+	*/
+	--wtk-tab-bg: var(--wtk-surface-window);
+	--wtk-tab-bg-hover: var(--wtk-surface-hover);
+	--wtk-tab-bg-active: var(--wtk-surface-raised);
+	--wtk-tab-fg: var(--wtk-fg-muted);
+	--wtk-tab-fg-active: var(--wtk-fg);
+	--wtk-tab-border: var(--wtk-stroke);
+	--wtk-tab-indicator: var(--wtk-accent);
+
+	/*
+	*** Dialog and modal overlay
+	*/
+	--wtk-dialog-bg: var(--wtk-surface-window);
+	--wtk-dialog-fg: var(--wtk-fg);
+	--wtk-dialog-border: var(--wtk-stroke);
+	--wtk-dialog-shadow: var(--wtk-shadow-lg);
+	--wtk-overlay-bg: var(--wtk-overlay-color);
+
+	/*
+	*** Status bar and frame
+	*/
+	--wtk-statusbar-bg: var(--wtk-surface-window);
+	--wtk-statusbar-fg: var(--wtk-fg-muted);
+	--wtk-statusbar-border: var(--wtk-stroke);
+	--wtk-frame-bg: var(--wtk-surface-base);
+	--wtk-frame-border: var(--wtk-stroke);
+	--wtk-frame-header-fg: var(--wtk-fg-muted);
+
+	/*
+	*** Badge and tag
+	*/
+	--wtk-badge-bg: var(--wtk-accent);
+	--wtk-badge-fg: var(--wtk-accent-fg);
+	--wtk-badge-neutral-bg: var(--wtk-surface-active);
+	--wtk-badge-neutral-fg: var(--wtk-fg);
+
+	/*
+	*** Spinner
+	*/
+	--wtk-spinner-color: var(--wtk-accent);
+	--wtk-spinner-track-color: var(--wtk-stroke);
+
+	/*
+	*** Info bar, four severities
+	*/
+	--wtk-infobar-info-bg: var(--wtk-info);
+	--wtk-infobar-info-fg: var(--wtk-info-fg);
+	--wtk-infobar-success-bg: var(--wtk-success);
+	--wtk-infobar-success-fg: var(--wtk-success-fg);
+	--wtk-infobar-warning-bg: var(--wtk-warning);
+	--wtk-infobar-warning-fg: var(--wtk-warning-fg);
+	--wtk-infobar-error-bg: var(--wtk-destructive);
+	--wtk-infobar-error-fg: var(--wtk-destructive-fg);
+}
