@@ -1,0 +1,224 @@
+/*
+ * Element level defaults. No .wtk-* classes belong in this file, they go in
+ * src/styles/components/. Everything here reads tier 3 tokens from vars.css.
+ */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/*
+*** Fixed viewport. Only designated inner regions scroll, per SPEC.md section 6.
+*/
+html,
+body {
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+body {
+	font-family: var(--wtk-font-family);
+	font-size: var(--wtk-font-size-base);
+	font-weight: var(--wtk-font-weight-normal);
+	line-height: var(--wtk-line-height);
+	color: var(--wtk-color-text);
+	background-color: var(--wtk-bg-window);
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+/*
+*** Desktop text behavior. Chrome is not selectable, content is.
+*/
+body {
+	user-select: none;
+	-webkit-user-select: none;
+	cursor: default;
+}
+
+input,
+textarea,
+[contenteditable],
+.wtk-selectable {
+	user-select: text;
+	-webkit-user-select: text;
+	cursor: auto;
+}
+
+img,
+svg {
+	-webkit-user-drag: none;
+	user-select: none;
+}
+
+/*
+*** Form elements inherit the toolkit font instead of the browser default.
+*/
+button,
+input,
+select,
+textarea {
+	font: inherit;
+	color: inherit;
+	letter-spacing: inherit;
+}
+
+button {
+	cursor: default;
+}
+
+/*
+*** Focus. The default outline is replaced, never simply removed. Components
+*** that draw their own ring override this.
+*/
+:focus {
+	outline: none;
+}
+
+:focus-visible {
+	outline: none;
+	box-shadow: 0 0 0 var(--wtk-focus-ring-width) var(--wtk-focus-ring-color);
+}
+
+/*
+*** Typography defaults. Sizes are set by components, not by tag.
+*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	font-size: inherit;
+	font-weight: var(--wtk-font-weight-bold);
+}
+
+p,
+figure,
+blockquote,
+dl,
+dd {
+	margin: 0;
+}
+
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+a {
+	color: var(--wtk-link-color);
+	text-decoration: none;
+}
+
+a:hover {
+	color: var(--wtk-link-color-hover);
+	text-decoration: underline;
+}
+
+code,
+kbd,
+pre,
+samp {
+	font-family: var(--wtk-font-family-mono);
+	font-size: var(--wtk-font-size-base);
+}
+
+hr {
+	height: var(--wtk-separator-width);
+	margin: 0;
+	border: 0;
+	background-color: var(--wtk-separator-color);
+}
+
+::selection {
+	color: var(--wtk-selection-fg);
+	background-color: var(--wtk-selection-bg);
+}
+
+::placeholder {
+	color: var(--wtk-entry-placeholder-fg);
+	opacity: 1;
+}
+
+/*
+*** Scrollbars for the regions that do scroll. Firefox first, then the
+*** WebKit pseudo elements for everything else.
+*/
+* {
+	scrollbar-width: thin;
+	scrollbar-color: var(--wtk-scrollbar-thumb-bg) var(--wtk-scrollbar-trough-bg);
+}
+
+::-webkit-scrollbar {
+	width: var(--wtk-scrollbar-size);
+	height: var(--wtk-scrollbar-size);
+}
+
+::-webkit-scrollbar-track {
+	background-color: var(--wtk-scrollbar-trough-bg);
+}
+
+::-webkit-scrollbar-track:vertical {
+	border-left: var(--wtk-border-width) solid var(--wtk-scrollbar-trough-border);
+}
+
+::-webkit-scrollbar-track:horizontal {
+	border-top: var(--wtk-border-width) solid var(--wtk-scrollbar-trough-border);
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: var(--wtk-scrollbar-thumb-bg);
+	border: 3px solid transparent;
+	border-radius: var(--wtk-border-radius-pill);
+	background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: var(--wtk-scrollbar-thumb-bg-hover);
+}
+
+::-webkit-scrollbar-thumb:active {
+	background-color: var(--wtk-scrollbar-thumb-bg-active);
+}
+
+::-webkit-scrollbar-corner {
+	background-color: var(--wtk-scrollbar-trough-bg);
+}
+
+[hidden] {
+	display: none !important;
+}
+
+[disabled],
+[aria-disabled="true"] {
+	cursor: default;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition-duration: 1ms !important;
+		animation-duration: 1ms !important;
+		animation-iteration-count: 1 !important;
+	}
+}

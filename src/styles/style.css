@@ -1,0 +1,14 @@
+/*
+ * The only stylesheet the app imports. src/main.tsx loads this file and
+ * nothing else, so cascade order is decided here rather than by the React
+ * module graph. Component .tsx files never import CSS.
+ */
+
+@import "./vars.css";
+
+@import "./base.css";
+
+/*
+*** Component stylesheets go below, alphabetically:
+*** @import "./components/wtkButton.css";
+*/
