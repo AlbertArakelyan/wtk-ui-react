@@ -1,7 +1,8 @@
 /*
- * Layout for the preview harness in src/App.tsx. Demo only, not part of the
- * library. Delete this file and its @import once a real app shell exists.
- * Classes are preview-* so they can never be mistaken for toolkit CSS.
+ * Layout for the preview harness in src/components/Playground.tsx. Demo only,
+ * not part of the library. Delete this file and its @import once a real app
+ * shell exists. Classes are preview-* so they can never be mistaken for
+ * toolkit CSS.
  */
 
 .preview {
