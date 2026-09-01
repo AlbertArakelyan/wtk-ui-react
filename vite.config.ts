@@ -19,7 +19,7 @@ export default defineConfig(({ mode }) => {
           lib: {
             entry: resolve(import.meta.dirname, 'src/index.ts'),
             formats: ['es', 'cjs'],
-            fileName: (format) => `wtk-ui.${format === 'es' ? 'js' : 'cjs'}`,
+            fileName: (format) => `wtk-ui-react.${format === 'es' ? 'js' : 'cjs'}`,
             cssFileName: 'styles',
           },
           rollupOptions: {

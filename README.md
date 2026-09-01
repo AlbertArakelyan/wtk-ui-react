@@ -1,4 +1,4 @@
-# wtk-ui
+# wtk-ui-react
 
 React components that reproduce the look and density of a GTK3 desktop toolkit. Built for apps that
 run inside a desktop wrapper such as Tauri or Electron, where web defaults look out of place.
@@ -9,7 +9,7 @@ third-party component dependencies.
 ## Install
 
 ```sh
-yarn add wtk-ui
+yarn add wtk-ui-react
 ```
 
 React 19 or later is a peer dependency, so it resolves from your project rather than shipping a
@@ -20,8 +20,8 @@ second copy.
 Import the stylesheet once, at the entry point of your app.
 
 ```tsx
-import { WtkButton, WtkInput, WtkSwitch } from 'wtk-ui';
-import 'wtk-ui/styles.css';
+import { WtkButton, WtkInput, WtkSwitch } from 'wtk-ui-react';
+import 'wtk-ui-react/styles.css';
 
 const Settings = () => (
   <form>
