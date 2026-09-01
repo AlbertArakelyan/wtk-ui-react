@@ -103,6 +103,10 @@
 	max-width: 220px;
 }
 
+.preview-field--wide {
+	max-width: 320px;
+}
+
 .preview-row-label {
 	min-width: 96px;
 	font-size: var(--wtk-font-size-small);

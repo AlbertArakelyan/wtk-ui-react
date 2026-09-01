@@ -63,6 +63,7 @@
 	--wtk-check-size: 16px;
 	--wtk-scrollbar-size: 10px;
 	--wtk-scrollbar-size-hover: 14px;
+	--wtk-textarea-min-height: 64px;
 	--wtk-progress-height: 4px;
 	--wtk-separator-width: 1px;
 
@@ -448,6 +449,25 @@
 	--wtk-input-selection-fg: var(--wtk-accent-fg);
 	--wtk-input-label-fg: var(--wtk-fg);
 	--wtk-input-error-fg: var(--wtk-destructive);
+
+	/*
+	*** Textarea. Same slots as the input, kept separate so a multi-line field
+	*** can diverge later without touching the input.
+	*/
+	--wtk-textarea-bg: var(--wtk-surface-base);
+	--wtk-textarea-bg-disabled: var(--wtk-surface-window);
+	--wtk-textarea-fg: var(--wtk-fg);
+	--wtk-textarea-fg-disabled: var(--wtk-fg-disabled);
+	--wtk-textarea-placeholder-fg: var(--wtk-fg-muted);
+	--wtk-textarea-border: var(--wtk-stroke);
+	--wtk-textarea-border-hover: var(--wtk-stroke-strong);
+	--wtk-textarea-border-focus: var(--wtk-accent);
+	--wtk-textarea-border-error: var(--wtk-destructive);
+	--wtk-textarea-border-warning: var(--wtk-warning);
+	--wtk-textarea-selection-bg: var(--wtk-accent);
+	--wtk-textarea-selection-fg: var(--wtk-accent-fg);
+	--wtk-textarea-label-fg: var(--wtk-fg);
+	--wtk-textarea-error-fg: var(--wtk-destructive);
 
 	/*
 	*** Header bar

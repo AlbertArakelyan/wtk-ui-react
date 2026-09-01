@@ -13,6 +13,7 @@
 */
 @import "./components/wtkButton.css";
 @import "./components/wtkInput.css";
+@import "./components/wtkTextarea.css";
 
 /*
 *** Demo only. Layout for the preview harness in src/App.tsx. Delete this line
