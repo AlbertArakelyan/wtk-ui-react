@@ -3,6 +3,7 @@ import { type FC, useEffect, useState } from 'react';
 import WtkButton from './WtkButton/WtkButton';
 import WtkCheckbox from './WtkCheckbox/WtkCheckbox';
 import WtkInput from './WtkInput/WtkInput';
+import WtkModal from './WtkModal/WtkModal';
 import WtkRadio from './WtkRadio/WtkRadio';
 import WtkSwitch from './WtkSwitch/WtkSwitch';
 import WtkTextarea from './WtkTextarea/WtkTextarea';
@@ -43,6 +44,7 @@ const Playground = () => {
   const [isTelemetryOn, setIsTelemetryOn] = useState(false);
   const [zone, setZone] = useState('center');
   const [isDarkPreferred, setIsDarkPreferred] = useState(false);
+  const [openModal, setOpenModal] = useState<string | null>(null);
 
   useEffect(() => {
     if (theme === 'system') {
@@ -419,6 +421,111 @@ const Playground = () => {
             <div className="preview-row">
               <WtkSwitch label="Enable syncing" error="Sign in before enabling this" />
             </div>
+          </section>
+        </section>
+
+        <section className="preview-component">
+          <h1 className="preview-component-title">WtkModal</h1>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Sizes</h2>
+            <div className="preview-row">
+              {(['sm', 'md', 'lg', 'xl'] as const).map((size) => (
+                <WtkButton key={size} onClick={() => setOpenModal(size)}>
+                  {size}
+                </WtkButton>
+              ))}
+            </div>
+            {(['sm', 'md', 'lg', 'xl'] as const).map((size) => (
+              <WtkModal
+                key={size}
+                isOpen={openModal === size}
+                size={size}
+                title={`Size ${size}`}
+                onClose={() => setOpenModal(null)}
+              >
+                <p>A {size} modal. The width comes from the matching --wtk-modal-width token.</p>
+              </WtkModal>
+            ))}
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Footer</h2>
+            <div className="preview-row">
+              <WtkButton variant="suggested" onClick={() => setOpenModal('footer')}>
+                Delete project
+              </WtkButton>
+            </div>
+            <WtkModal
+              isOpen={openModal === 'footer'}
+              title="Delete project"
+              onClose={() => setOpenModal(null)}
+              footer={
+                <>
+                  <WtkButton variant="flat" onClick={() => setOpenModal(null)}>
+                    Cancel
+                  </WtkButton>
+                  <WtkButton variant="destructive" onClick={() => setOpenModal(null)}>
+                    Delete
+                  </WtkButton>
+                </>
+              }
+            >
+              <p>This removes the project and everything in it. The action cannot be undone.</p>
+            </WtkModal>
+          </section>
+
+          <section className="preview-section">
+            <h2 className="preview-section-title">Variations</h2>
+            <div className="preview-row">
+              <WtkButton onClick={() => setOpenModal('no-close')}>No close button</WtkButton>
+              <WtkButton onClick={() => setOpenModal('scroll')}>Long content</WtkButton>
+              <WtkButton onClick={() => setOpenModal('sticky')}>Escape and backdrop off</WtkButton>
+            </div>
+            <WtkModal
+              isOpen={openModal === 'no-close'}
+              title="No close button"
+              showCloseButton={false}
+              onClose={() => setOpenModal(null)}
+              footer={
+                <WtkButton variant="suggested" onClick={() => setOpenModal(null)}>
+                  Done
+                </WtkButton>
+              }
+            >
+              <p>Escape and a backdrop click still close this one.</p>
+            </WtkModal>
+            <WtkModal
+              isOpen={openModal === 'scroll'}
+              size="lg"
+              title="Long content"
+              onClose={() => setOpenModal(null)}
+              footer={
+                <WtkButton variant="flat" onClick={() => setOpenModal(null)}>
+                  Close
+                </WtkButton>
+              }
+            >
+              {Array.from({ length: 20 }, (_, index) => (
+                <p key={index}>
+                  Paragraph {index + 1}. The body scrolls while the header and footer stay put.
+                </p>
+              ))}
+            </WtkModal>
+            <WtkModal
+              isOpen={openModal === 'sticky'}
+              title="Escape and backdrop off"
+              closeOnEscape={false}
+              closeOnBackdropClick={false}
+              onClose={() => setOpenModal(null)}
+              footer={
+                <WtkButton variant="suggested" onClick={() => setOpenModal(null)}>
+                  Understood
+                </WtkButton>
+              }
+            >
+              <p>Only the close button and the footer action dismiss this one.</p>
+            </WtkModal>
           </section>
         </section>
       </div>

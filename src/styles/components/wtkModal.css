@@ -1,0 +1,80 @@
+/*
+ * The UA stylesheet gives dialog a border, 1em padding, a white background and
+ * color: canvastext, all of which have to be reset or the panel ignores the
+ * theme. Padding in particular must stay 0: a backdrop click is detected by the
+ * dialog being the event target, and padding would turn the strip around the
+ * panel into a close region.
+ */
+.wtk-modal {
+	display: none;
+	grid-template-rows: auto 1fr auto;
+	width: var(--wtk-modal-width-md);
+	max-width: 100%;
+	max-height: var(--wtk-modal-max-height);
+	padding: 0;
+	color: var(--wtk-modal-fg);
+	background-color: var(--wtk-modal-bg);
+	border: var(--wtk-border-width) solid var(--wtk-modal-border);
+	border-radius: var(--wtk-border-radius);
+	box-shadow: var(--wtk-modal-shadow);
+}
+
+/* a dialog is display: none until opened, so the grid only applies when it is */
+.wtk-modal[open] {
+	display: grid;
+}
+
+.wtk-modal::backdrop {
+	background-color: var(--wtk-overlay-bg);
+}
+
+.wtk-modal__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--wtk-spacing-md);
+	padding: var(--wtk-spacing-md) var(--wtk-spacing-lg);
+	border-bottom: var(--wtk-border-width) solid var(--wtk-modal-header-border);
+}
+
+.wtk-modal__title {
+	overflow: hidden;
+	font-size: var(--wtk-font-size-large);
+	font-weight: var(--wtk-font-weight-bold);
+	color: var(--wtk-modal-title-fg);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* min-height is what lets the row shrink far enough to actually scroll */
+.wtk-modal__body {
+	min-height: 0;
+	padding: var(--wtk-spacing-lg);
+	overflow-y: auto;
+}
+
+.wtk-modal__footer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: var(--wtk-spacing-md);
+	padding: var(--wtk-spacing-md) var(--wtk-spacing-lg);
+	border-top: var(--wtk-border-width) solid var(--wtk-modal-footer-border);
+}
+
+/* sizes */
+.wtk-modal--sm {
+	width: var(--wtk-modal-width-sm);
+}
+
+.wtk-modal--md {
+	width: var(--wtk-modal-width-md);
+}
+
+.wtk-modal--lg {
+	width: var(--wtk-modal-width-lg);
+}
+
+.wtk-modal--xl {
+	width: var(--wtk-modal-width-xl);
+}

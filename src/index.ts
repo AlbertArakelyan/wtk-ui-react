@@ -28,6 +28,9 @@ export type {
   WtkInputSizeType,
 } from './components/WtkInput/types';
 
+export { default as WtkModal } from './components/WtkModal/WtkModal';
+export type { IWtkModalProps, WtkModalSizeType } from './components/WtkModal/types';
+
 export { default as WtkRadio } from './components/WtkRadio/WtkRadio';
 export type { IWtkRadioProps } from './components/WtkRadio/types';
 
