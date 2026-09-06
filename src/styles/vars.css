@@ -66,6 +66,11 @@
 	--wtk-scrollbar-size: 10px;
 	--wtk-scrollbar-size-hover: 14px;
 	--wtk-textarea-min-height: 64px;
+	--wtk-modal-width-sm: 320px;
+	--wtk-modal-width-md: 420px;
+	--wtk-modal-width-lg: 560px;
+	--wtk-modal-width-xl: 720px;
+	--wtk-modal-max-height: 85vh;
 	--wtk-progress-height: 4px;
 	--wtk-separator-width: 1px;
 
@@ -654,12 +659,15 @@
 	--wtk-tab-indicator: var(--wtk-accent);
 
 	/*
-	*** Dialog and modal overlay
+	*** Modal and its overlay
 	*/
-	--wtk-dialog-bg: var(--wtk-surface-window);
-	--wtk-dialog-fg: var(--wtk-fg);
-	--wtk-dialog-border: var(--wtk-stroke);
-	--wtk-dialog-shadow: var(--wtk-shadow-lg);
+	--wtk-modal-bg: var(--wtk-surface-window);
+	--wtk-modal-fg: var(--wtk-fg);
+	--wtk-modal-border: var(--wtk-stroke);
+	--wtk-modal-shadow: var(--wtk-shadow-lg);
+	--wtk-modal-title-fg: var(--wtk-fg-strong);
+	--wtk-modal-header-border: var(--wtk-stroke);
+	--wtk-modal-footer-border: var(--wtk-stroke);
 	--wtk-overlay-bg: var(--wtk-overlay-color);
 
 	/*

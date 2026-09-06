@@ -43,6 +43,7 @@ If your TypeScript setup does not already declare CSS modules, add `declare modu
 | `WtkInput` | label, icon either side, error text; `inputSize` rather than `size`, which the DOM already uses |
 | `WtkTextarea` | `resizable` accepts `vertical`, `horizontal`, `bidirectional`; omit it for a fixed field |
 | `WtkCheckbox` | supports the indeterminate state through `isIndeterminate` |
+| `WtkModal` | native `<dialog>`, so Escape and focus handling come from the browser; `title`, `footer`, `showCloseButton`, four sizes |
 | `WtkRadio` | group with the native `name` attribute; arrow keys move the selection |
 | `WtkSwitch` | pill track with embedded state glyphs; `labelPosition` for settings rows |
 

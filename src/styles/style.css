@@ -15,6 +15,7 @@
 @import "./components/wtkButton.css";
 @import "./components/wtkCheckbox.css";
 @import "./components/wtkInput.css";
+@import "./components/wtkModal.css";
 @import "./components/wtkRadio.css";
 @import "./components/wtkSwitch.css";
 @import "./components/wtkTextarea.css";
